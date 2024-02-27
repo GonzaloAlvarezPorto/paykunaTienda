@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat;
+  background-color: rgb(25, 41, 27);
+}
+
+.cuerpo__paginaPrincipal {
+  display: flex;
+  flex-direction: column;
+  background-color: greenyellow;
+}
+.cuerpo__paginaPrincipal .contenedor__titulo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cuerpo__paginaPrincipal .contenedor__titulo .titulo__paginaPrincipal {
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+.cuerpo__paginaPrincipal .contenedor__texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cuerpo__paginaPrincipal .contenedor__texto .texto__paginaPrincipal {
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,29 @@
+.cuerpo__paginaPrincipal {
+    display: flex;
+    flex-direction: column;
+    background-color: greenyellow;
+
+    .contenedor__titulo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .titulo__paginaPrincipal {
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+    }
+
+    .contenedor__texto {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .texto__paginaPrincipal {
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+    }
+}
