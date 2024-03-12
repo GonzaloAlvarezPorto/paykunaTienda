@@ -2,13 +2,12 @@
   padding: 0;
   margin: 0;
   font-family: Montserrat;
-  background-color: rgb(25, 41, 27);
 }
 
 .cuerpo__paginaPrincipal {
   display: flex;
   flex-direction: column;
-  background-color: greenyellow;
+  background-color: rgb(36, 63, 26);
 }
 .cuerpo__paginaPrincipal .contenedor__titulo {
   display: flex;
@@ -24,11 +23,195 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 .cuerpo__paginaPrincipal .contenedor__texto .texto__paginaPrincipal {
   color: white;
+  text-align: left;
+  padding: 0.5rem 2rem;
+}
+
+header {
+  padding: 0;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  background-color: rgb(16, 43, 6);
+}
+header .encabezado {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+header .encabezado .encabezado__contenedorLogos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100px;
+  width: 50%;
+  justify-content: start;
+  padding-left: 5vh;
+}
+header .encabezado .encabezado__contenedorLogos .contenedorLogos__logo {
+  display: flex;
+}
+header .encabezado .encabezado__contenedorLogos .contenedorLogos__texto {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-left: 5px;
+}
+header .encabezado .encabezado__contenedorLogos .contenedorLogos__texto .logo__encabezadoImagenTexto {
+  height: 70%;
+  padding-left: 5px;
+}
+header .encabezado .encabezado__abrir {
+  display: none;
+  background-color: rgb(16, 43, 6);
+  width: 50%;
+  text-align: right;
+}
+header .encabezado .encabezado__menu {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: end;
+  background-color: rgb(16, 43, 6);
+}
+header .encabezado .encabezado__menu .menu__listado {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+  gap: 1rem;
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
+  margin: 0;
+}
+header .encabezado .encabezado__menu .menu__listado .listado__cerrar {
+  display: none;
+  background-color: rgb(16, 43, 6);
+}
+header .encabezado .encabezado__menu .menu__listado .listado__items {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+header .encabezado .encabezado__menu .menu__listado .listado__items .items__enlace {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(206, 169, 91);
+}
+header .encabezado .encabezado__menu .menu__listado .listado__items .items__enlace:hover {
+  color: rgb(216, 179, 101);
+}
+
+@media (max-width: 965px) {
+  header .encabezado {
+    display: flex;
+    justify-content: end;
+  }
+  header .encabezado .encabezado__abrir {
+    display: block;
+    border: none;
+  }
+  header .encabezado .encabezado__abrir .abrir__imagen {
+    height: 30px;
+    padding: 1rem;
+    border: none;
+  }
+  header .encabezado .encabezado__menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 99px;
+    right: 0;
+    margin-top: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  header .encabezado .encabezado__menu .menu__listado {
+    flex-direction: column;
+    padding: 0;
+  }
+  header .encabezado .encabezado__menu .menu__listado .listado__cerrar {
+    display: block;
+    border: none;
+    height: 51px;
+  }
+  header .encabezado .encabezado__menu .menu__listado .listado__cerrar .cerrar__imagen {
+    padding: 5px;
+    border: 2px solid white;
+    border-radius: 90px;
+    height: 15px;
+  }
+  header .encabezado .encabezado__menu .menu__listado .listado__items .items__enlace {
+    font-size: 16px;
+    padding: 1rem;
+  }
+  header .encabezado .encabezado__menu.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.pieDePagina .pieDePagina__redes {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: rgb(16, 43, 6);
+}
+.pieDePagina .pieDePagina__redes .redes__contenedores {
+  margin: 0;
+  padding: 4px;
+}
+.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace:hover {
+  color: white;
+}
+.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .enlace__imagen, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .gmail, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .instagram, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .whatsapp, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .linkedin, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .facebook {
+  background-color: rgb(206, 169, 91);
+  height: 40px;
+  border: 1px solid rgb(206, 169, 91);
+  border-radius: 100px;
+}
+.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .enlace__imagen:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .gmail:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .instagram:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .whatsapp:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .linkedin:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .facebook:hover {
+  transition: 1s;
+}
+.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .facebook:hover {
+  border: 1px solid blue;
+  background-color: blue;
+}
+.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .linkedin:hover {
+  border: 1px solid rgb(73, 73, 247);
+  background-color: rgb(73, 73, 247);
+}
+.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .whatsapp:hover {
+  border: 1px solid rgb(78, 161, 23);
+  background-color: rgb(78, 161, 23);
+}
+.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .instagram:hover {
+  border: 1px solid rgb(192, 42, 160);
+  background-color: rgb(192, 42, 160);
+}
+.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .gmail:hover {
+  border: 1px solid rgb(255, 72, 0);
+  background-color: rgb(255, 72, 0);
+}
+.pieDePagina .pieDePagina__derechos {
+  background-color: rgb(46, 73, 36);
+  margin: 0;
+  color: rgb(206, 169, 91);
+  text-align: center;
+  padding: 0.7rem;
+}
+.pieDePagina .pieDePagina__derechos:hover {
+  color: rgb(216, 179, 101);
+  transition: 1s;
 }
 
 /*# sourceMappingURL=styles.css.map */

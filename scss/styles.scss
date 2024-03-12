@@ -1,2 +1,7 @@
-@import "generales";
-@import "principal";
+@import "_variables";
+@import "_generales";
+
+@import "_principal";
+@import "_cabecera";
+@import "_cabecera_query";
+@import "pieDePagina";
