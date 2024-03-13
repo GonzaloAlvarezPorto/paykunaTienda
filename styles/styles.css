@@ -4,6 +4,10 @@
   font-family: Montserrat;
 }
 
+html {
+  background-color: rgb(6, 33, 0);
+}
+
 .cuerpo__paginaPrincipal {
   display: flex;
   flex-direction: column;
@@ -46,31 +50,38 @@ header .encabezado {
   justify-content: space-between;
 }
 header .encabezado .encabezado__contenedorLogos {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 100px;
-  width: 50%;
+  width: 30%;
   justify-content: start;
   padding-left: 5vh;
 }
-header .encabezado .encabezado__contenedorLogos .contenedorLogos__logo {
+header .encabezado .encabezado__contenedorLogos .contenedorLogos__enlace {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+header .encabezado .encabezado__contenedorLogos .contenedorLogos__enlace .contenedorLogos__logo {
   display: flex;
 }
-header .encabezado .encabezado__contenedorLogos .contenedorLogos__texto {
+header .encabezado .encabezado__contenedorLogos .contenedorLogos__enlace .contenedorLogos__texto {
   display: flex;
   height: 100%;
   align-items: center;
   padding-left: 5px;
 }
-header .encabezado .encabezado__contenedorLogos .contenedorLogos__texto .logo__encabezadoImagenTexto {
+header .encabezado .encabezado__contenedorLogos .contenedorLogos__enlace .contenedorLogos__texto .logo__encabezadoImagenTexto {
   height: 70%;
   padding-left: 5px;
 }
 header .encabezado .encabezado__abrir {
   display: none;
   background-color: rgb(16, 43, 6);
-  width: 50%;
+  width: 70%;
   text-align: right;
 }
 header .encabezado .encabezado__menu {
@@ -95,7 +106,7 @@ header .encabezado .encabezado__menu .menu__listado .listado__cerrar {
   background-color: rgb(16, 43, 6);
 }
 header .encabezado .encabezado__menu .menu__listado .listado__items {
-  padding: 0;
+  padding: 1rem;
   margin: 0;
   display: flex;
   justify-content: space-around;
@@ -151,6 +162,9 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
     border-radius: 90px;
     height: 15px;
   }
+  header .encabezado .encabezado__menu .menu__listado .listado__items {
+    padding: 0;
+  }
   header .encabezado .encabezado__menu .menu__listado .listado__items .items__enlace {
     font-size: 16px;
     padding: 1rem;
@@ -158,6 +172,76 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   header .encabezado .encabezado__menu.visible {
     opacity: 1;
     visibility: visible;
+  }
+}
+.cuerpo__paginaCompras {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(36, 63, 26);
+}
+.cuerpo__paginaCompras .paginaCompras__menuLateral {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  padding-top: 3rem;
+}
+.cuerpo__paginaCompras .paginaCompras__menuLateral .menuLateral__textoProvisorio {
+  width: 100%;
+  display: flex;
+  margin-block: 0;
+  margin-inline: 0;
+  color: greenyellow;
+  padding: 1rem;
+  text-align: center;
+}
+.cuerpo__paginaCompras .paginaCompras__contenedorProductos {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  justify-content: space-around;
+  margin: 0.5rem 0;
+}
+.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha {
+  color: white;
+  background-color: rgb(159, 216, 157);
+  border-radius: 10px;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha .ficha__titulo {
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha .ficha__titulo .titulo__producto {
+  font-weight: bold;
+  text-shadow: 0 0 10px rgb(16, 43, 6);
+}
+.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha .ficha__imagen {
+  display: flex;
+  margin: 0 1rem 1rem 1rem;
+}
+.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha .ficha__imagen .imagen__producto {
+  width: 100%;
+  border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+  .cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha {
+    width: auto;
   }
 }
 .pieDePagina .pieDePagina__redes {
@@ -173,22 +257,18 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
 .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace:hover {
   color: white;
 }
-.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .enlace__imagen, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .gmail, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .instagram, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .whatsapp, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .linkedin, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .facebook {
+.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .enlace__imagen, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .gmail, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .instagram, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .whatsapp, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .facebook {
   background-color: rgb(206, 169, 91);
   height: 40px;
   border: 1px solid rgb(206, 169, 91);
   border-radius: 100px;
 }
-.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .enlace__imagen:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .gmail:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .instagram:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .whatsapp:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .linkedin:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .facebook:hover {
+.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .enlace__imagen:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .gmail:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .instagram:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .whatsapp:hover, .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .facebook:hover {
   transition: 1s;
 }
 .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .facebook:hover {
   border: 1px solid blue;
   background-color: blue;
-}
-.pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .linkedin:hover {
-  border: 1px solid rgb(73, 73, 247);
-  background-color: rgb(73, 73, 247);
 }
 .pieDePagina .pieDePagina__redes .redes__contenedores .contenedores__enlace .whatsapp:hover {
   border: 1px solid rgb(78, 161, 23);

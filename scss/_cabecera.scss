@@ -13,26 +13,36 @@ header {
         justify-content: space-between;
 
         .encabezado__contenedorLogos {
+            position: relative;
             display: flex;
             flex-direction: row;
             align-items: center;
             height: 100px;
-            width: 50%;
+            width: 30%;
             justify-content: start;
             padding-left: 5vh;
 
-            .contenedorLogos__logo {
+            .contenedorLogos__enlace {
+                position: relative;
                 display: flex;
-            }
-
-            .contenedorLogos__texto {
-                display: flex;
-                height: 100%;
                 align-items: center;
-                padding-left: 5px;
-                .logo__encabezadoImagenTexto {
-                    height: 70%;
+                height: 100px;
+
+                .contenedorLogos__logo {
+                    display: flex;
+
+                }
+
+                .contenedorLogos__texto {
+                    display: flex;
+                    height: 100%;
+                    align-items: center;
                     padding-left: 5px;
+
+                    .logo__encabezadoImagenTexto {
+                        height: 70%;
+                        padding-left: 5px;
+                    }
                 }
             }
         }
@@ -40,7 +50,7 @@ header {
         .encabezado__abrir {
             display: none;
             background-color: $colorCabecera;
-            width: 50%;
+            width: 70%;
             text-align: right;
         }
 
@@ -67,7 +77,7 @@ header {
                 }
 
                 .listado__items {
-                    padding: 0;
+                    padding: 1rem;
                     margin: 0;
                     display: flex;
                     justify-content: space-around;

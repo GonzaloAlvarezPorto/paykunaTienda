@@ -10,8 +10,6 @@ cerrar.addEventListener("click", () => {
     nav.classList.remove("visible");
 });
 
-//PRIMER ENTREGA
-
 /*let nombreUsuario = prompt("Ingresá tu nombre");
 
 document.getElementById("nombreUsuario").innerText = nombreUsuario;
