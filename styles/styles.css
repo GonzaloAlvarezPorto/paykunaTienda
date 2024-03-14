@@ -8,6 +8,10 @@ html {
   background-color: rgb(6, 33, 0);
 }
 
+main {
+  min-height: 400px;
+}
+
 .cuerpo__paginaPrincipal {
   display: flex;
   flex-direction: column;
@@ -184,10 +188,9 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   display: flex;
   flex-direction: column;
   align-self: flex-start;
-  padding-top: 3rem;
+  padding: 1rem 0;
 }
 .cuerpo__paginaCompras .paginaCompras__menuLateral .menuLateral__textoProvisorio {
-  width: 100%;
   display: flex;
   margin-block: 0;
   margin-inline: 0;
