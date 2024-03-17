@@ -1,9 +1,14 @@
 const boton = document.getElementById("boton");
 
-// Agregar un evento de clic al botón
 boton.addEventListener("click", function () {
 
     let nombreUsuario = prompt("Ingresá tu nombre");
+
+    if (nombreUsuario === null) {
+
+        alert("Compra cancelada. ¡Esperamos verte pronto!");
+        return;
+    }
 
     const productos = [
         {
