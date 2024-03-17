@@ -1,3 +1,7 @@
+let totalAcumulado = 0;
+
+let productosCompradosTotales = {};
+
 const boton = document.getElementById("boton");
 
 boton.addEventListener("click", function () {
@@ -116,11 +120,9 @@ boton.addEventListener("click", function () {
 
     alert("¡Hola " + primeraLetraMayuscula(nombreUsuario) + "! Estamos felices de recibirte en Almacén Paykuna!");
 
-    let ofrecimiento = "Esto tenemos para ofrecerte\n" + todosLosTipos() + "\nRecordá el número de la opción que querés elegir.";
+    let ofrecimiento = "Esto tenemos para ofrecerte\n" + todosLosTipos() + "\n";
 
-    alert(ofrecimiento);
-
-    let eleccion = prompt("¿Que es lo que estás buscando?");
+    let eleccion = prompt(ofrecimiento + "¿Qué es lo que estás buscando?");
 
     function eleccionDeTipos() {
         let unTipo = arrayTodosLosTipos()[eleccion - 1];
@@ -198,16 +200,47 @@ boton.addEventListener("click", function () {
             alert("El precio total de " + cantidad + " " + primeraLetraMayuscula(producto.nombre) + " es $" + precioTotal);
         });
 
+        totalAcumulado += sumaTotal;
+
         let mensajeProductosComprados = "Productos comprados:\n";
         for (let producto in productosComprados) {
             let precioUnitario = listadoDeProductos.find(item => item.nombre === producto).precio;
             let precioTotalProducto = productosComprados[producto] * precioUnitario;
-            mensajeProductosComprados += primeraLetraMayuscula(producto) + 
-            " x " + productosComprados[producto] + " und. P Unit: $" 
-            + precioUnitario + ". P Total: $" + precioTotalProducto + "\n";
+            mensajeProductosComprados += primeraLetraMayuscula(producto) +
+                " x " + productosComprados[producto] + " und. P Unit: $"
+                + precioUnitario + ". P Total: $" + precioTotalProducto + "\n";
         }
 
-        alert(mensajeProductosComprados + "\nGracias " + nombreUsuario + " por tu compra. El importe total es $" + sumaTotal);
+        alert(mensajeProductosComprados + "\nGracias " + primeraLetraMayuscula(nombreUsuario) + " por tu compra. El importe total es $" + sumaTotal);
+
+        const agregarMas = confirm("¿Deseas agregar más productos a tu compra?");
+        if (agregarMas) {
+            eleccion = prompt("¿Que es lo que estás buscando?");
+            if (eleccion !== null) {
+                elegirUnaDeTodasLasOpciones();
+            } else {
+                agregarMasProductos();
+            }
+        } else {
+            alert("Gracias por tu compra. ¡Vuelve pronto!");
+            alert("El total acumulado de todas las compras es: $" + totalAcumulado);
+        }
+
+        function agregarMasProductos() {
+            const agregarMas = confirm("¿Deseas agregar más productos a tu compra?");
+            if (agregarMas) {
+                eleccion = prompt("¿Que es lo que estás buscando?");
+                if (eleccion !== null) {
+                    elegirUnaDeTodasLasOpciones();
+                } else {
+                    alert("Gracias por tu compra. ¡Vuelve pronto!");
+                    alert("El total acumulado de todas las compras es: $" + totalAcumulado);
+                }
+            } else {
+                alert("Gracias por tu compra. ¡Vuelve pronto!");
+                alert("El total acumulado de todas las compras es: $" + totalAcumulado);
+            }
+        }
 
     }
 
@@ -216,24 +249,23 @@ boton.addEventListener("click", function () {
         eleccion = prompt("¿Que es lo que estás buscando?");
     }
 
-    switch (eleccion) {
-        case "1":
-            eleccionDeTipos();
-            break;
-        case "2":
-            eleccionDeTipos();
-            break;
-        case "3":
-            frutaYverdura();
-            break;
-        case "4":
-            todosLosProductos();
-            break;
-        case "5":
-            eleccionDeTipos();
-            break;
-        default:
-            eleccionDeTipos();
-            break;
+
+    function elegirUnaDeTodasLasOpciones() {
+        switch (eleccion) {
+            case "1":
+            case "2":
+            case "5":
+            default:
+                eleccionDeTipos();
+                break;
+            case "3":
+                frutaYverdura();
+                break;
+            case "4":
+                todosLosProductos();
+                break;
+        }
     }
+
+    elegirUnaDeTodasLasOpciones();
 });
