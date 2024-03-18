@@ -1,17 +1,19 @@
 let totalAcumulado = 0;
 
-let productosCompradosTotales = {};
-
 const boton = document.getElementById("boton");
 
 boton.addEventListener("click", function () {
 
     let nombreUsuario = prompt("Ingresá tu nombre");
 
-    if (nombreUsuario === null) {
+    while ((nombreUsuario === "") || !isNaN(nombreUsuario)) {
+        if (nombreUsuario === null) {
 
-        alert("Compra cancelada. ¡Esperamos verte pronto!");
-        return;
+            alert("Compra cancelada. ¡Esperamos verte pronto!\nGracias");
+            return;
+        }
+        alert("No aceptamos desconocidos. Ingresá algo por lo menos.")
+        nombreUsuario = prompt("Ingresá tu nombre, dale bebuli");
     }
 
     const productos = [
@@ -113,16 +115,27 @@ boton.addEventListener("click", function () {
         return tiposUnicos;
     }
 
-    while ((nombreUsuario === "") || !isNaN(nombreUsuario)) {
-        alert("No aceptamos desconocidos. Ingresá algo por lo menos.")
-        nombreUsuario = prompt("Ingresá tu nombre, dale bebuli");
-    }
-
     alert("¡Hola " + primeraLetraMayuscula(nombreUsuario) + "! Estamos felices de recibirte en Almacén Paykuna!");
 
     let ofrecimiento = "Esto tenemos para ofrecerte\n" + todosLosTipos() + "\n";
 
     let eleccion = prompt(ofrecimiento + "¿Qué es lo que estás buscando?");
+
+    correccionDeErroresEnLaEleccion();
+
+    function correccionDeErroresEnLaEleccion() {
+        while (eleccion < 1 || eleccion > 6 || isNaN(eleccion)) {
+
+            if (eleccion === null) {
+                alert("Compra cancelada. ¡Esperamos verte pronto!\nGracias "
+                    + nombreUsuario + " por tu compra.\nEl importe total a pagar es $" + totalAcumulado);
+                return;
+            }
+
+            alert("Elegiste mal, debés ingresar una opción válida");
+            eleccion = prompt(ofrecimiento + "¿Qué es lo que estás buscando?");
+        }
+    }
 
     function eleccionDeTipos() {
         let unTipo = arrayTodosLosTipos()[eleccion - 1];
@@ -212,43 +225,22 @@ boton.addEventListener("click", function () {
         }
 
         alert(mensajeProductosComprados + "\nGracias " + primeraLetraMayuscula(nombreUsuario) + " por tu compra. El importe total es $" + sumaTotal);
-
-        const agregarMas = confirm("¿Deseas agregar más productos a tu compra?");
-        if (agregarMas) {
-            eleccion = prompt("¿Que es lo que estás buscando?");
-            if (eleccion !== null) {
-                elegirUnaDeTodasLasOpciones();
-            } else {
-                agregarMasProductos();
-            }
-        } else {
-            alert("Gracias por tu compra. ¡Vuelve pronto!");
-            alert("El total acumulado de todas las compras es: $" + totalAcumulado);
-        }
-
-        function agregarMasProductos() {
-            const agregarMas = confirm("¿Deseas agregar más productos a tu compra?");
-            if (agregarMas) {
-                eleccion = prompt("¿Que es lo que estás buscando?");
-                if (eleccion !== null) {
-                    elegirUnaDeTodasLasOpciones();
-                } else {
-                    alert("Gracias por tu compra. ¡Vuelve pronto!");
-                    alert("El total acumulado de todas las compras es: $" + totalAcumulado);
-                }
-            } else {
-                alert("Gracias por tu compra. ¡Vuelve pronto!");
-                alert("El total acumulado de todas las compras es: $" + totalAcumulado);
-            }
-        }
-
+        agregarMasProductos();
     }
 
-    while (eleccion < 1 || eleccion > 6 || isNaN(eleccion)) {
-        alert("Elegiste mal, debés ingresar una opción válida");
-        eleccion = prompt("¿Que es lo que estás buscando?");
-    }
+    function agregarMasProductos() {
+        let resultado = window.confirm("¿Querés agregar algo a tu compra?");
 
+        if (resultado) {
+            eleccion = prompt(ofrecimiento + "¿Qué es lo que estás buscando?");
+
+            correccionDeErroresEnLaEleccion();
+            elegirUnaDeTodasLasOpciones();
+        }
+        else {
+            alert("Gracias " + nombreUsuario + " por tu compra.\nEl importe total a pagar es $" + totalAcumulado);
+        }
+    }
 
     function elegirUnaDeTodasLasOpciones() {
         switch (eleccion) {
