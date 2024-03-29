@@ -13,13 +13,17 @@
                     padding: 1rem;
                     border: none;
                 }
+
+                .abrir__imagen.invisible{
+                    visibility: hidden;
+                }
             }
 
             .encabezado__menu {
                 display: flex;
                 flex-direction: column;
                 position: absolute;
-                top: 99px;
+                top: 85px;
                 right: 0;
                 margin-top: 0;
                 opacity: 0;
@@ -28,19 +32,6 @@
                 .menu__listado {
                     flex-direction: column;
                     padding: 0;
-
-                    .listado__cerrar {
-                        display: block;
-                        border: none;
-                        height: 51px;
-                        
-                        .cerrar__imagen {
-                            padding: 5px;
-                            border: 2px solid white;
-                            border-radius: 90px;
-                            height: 15px;
-                        }
-                    }
 
                     .listado__items {
                         padding: 0;

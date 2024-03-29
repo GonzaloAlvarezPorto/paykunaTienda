@@ -66,15 +66,9 @@ header {
                 justify-content: space-around;
                 align-items: center;
                 list-style-type: none;
-                gap: 1rem;
                 text-align: center;
                 padding: 1rem;
                 margin: 0;
-
-                .listado__cerrar {
-                    display: none;
-                    background-color: $colorCabecera;
-                }
 
                 .listado__items {
                     padding: 1rem;

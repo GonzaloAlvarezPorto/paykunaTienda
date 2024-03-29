@@ -12,6 +12,10 @@ main {
   min-height: 400px;
 }
 
+.mostrar {
+  display: block;
+}
+
 .cuerpo__paginaPrincipal {
   display: flex;
   flex-direction: column;
@@ -100,14 +104,9 @@ header .encabezado .encabezado__menu .menu__listado {
   justify-content: space-around;
   align-items: center;
   list-style-type: none;
-  gap: 1rem;
   text-align: center;
   padding: 1rem;
   margin: 0;
-}
-header .encabezado .encabezado__menu .menu__listado .listado__cerrar {
-  display: none;
-  background-color: rgb(16, 43, 6);
 }
 header .encabezado .encabezado__menu .menu__listado .listado__items {
   padding: 1rem;
@@ -141,11 +140,14 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
     padding: 1rem;
     border: none;
   }
+  header .encabezado .encabezado__abrir .abrir__imagen.invisible {
+    visibility: hidden;
+  }
   header .encabezado .encabezado__menu {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 99px;
+    top: 85px;
     right: 0;
     margin-top: 0;
     opacity: 0;
@@ -154,17 +156,6 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   header .encabezado .encabezado__menu .menu__listado {
     flex-direction: column;
     padding: 0;
-  }
-  header .encabezado .encabezado__menu .menu__listado .listado__cerrar {
-    display: block;
-    border: none;
-    height: 51px;
-  }
-  header .encabezado .encabezado__menu .menu__listado .listado__cerrar .cerrar__imagen {
-    padding: 5px;
-    border: 2px solid white;
-    border-radius: 90px;
-    height: 15px;
   }
   header .encabezado .encabezado__menu .menu__listado .listado__items {
     padding: 0;
@@ -180,72 +171,241 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
 }
 .cuerpo__paginaCompras {
   display: flex;
-  flex-direction: row;
   background-color: rgb(36, 63, 26);
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  flex-direction: row-reverse;
 }
-.cuerpo__paginaCompras .paginaCompras__menuLateral {
-  width: 30%;
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito {
+  width: 40%;
   display: flex;
+  background-color: rgb(46, 73, 36);
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  margin: 1rem;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__fichaUsuario {
+  display: flex;
+  flex-direction: row;
+  transition: 2s;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__fichaUsuario .sectorCarrito__usuario {
+  display: flex;
+  padding: 0.5rem;
+  background-color: rgb(6, 33, 0);
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__fichaUsuario .sectorCarrito__datosUsuario {
+  width: auto;
+  height: auto;
+  padding: 0.5rem;
+  background-color: rgb(16, 43, 6);
+  opacity: 0.9;
+  border: 2px solid black;
+  margin: 0.2rem;
+  display: none;
+  color: rgb(216, 179, 101);
+  text-align: start;
+  font-size: 12px;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__texto {
+  padding: 0.5rem;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__contrasenyaIngresada {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-style: none;
+  border-radius: 10px;
+  border: 5px solid rgb(16, 43, 6);
+  background-color: rgb(207, 194, 194);
+  text-align: center;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__botonera {
+  display: flex;
+  flex-direction: row;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__botonera .sectorCarrito__boton {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__botonRegistro {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro {
+  display: none;
+  flex-direction: column;
+  background-color: rgb(26, 53, 16);
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  border: 1px solid white;
+  align-items: center;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectores, .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorNombre,
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorApellido,
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorContrasenya,
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorMail {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgb(46, 73, 36);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  width: 100%;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectores .formularioRegistro__label, .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorNombre .formularioRegistro__label,
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorApellido .formularioRegistro__label,
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorContrasenya .formularioRegistro__label,
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorMail .formularioRegistro__label {
+  padding-right: 2rem;
+  text-align: left;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectores .formularioRegistro__input, .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorNombre .formularioRegistro__input,
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorApellido .formularioRegistro__input,
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorContrasenya .formularioRegistro__input,
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorMail .formularioRegistro__input {
+  height: 25px;
+  width: 250px;
+  border-style: none;
+  border-radius: 10px;
+  border: 5px solid rgb(16, 43, 6);
+  background-color: rgb(207, 194, 194);
+  text-align: center;
+}
+.cuerpo__paginaCompras .paginaCompras__sectorCarrito .formularioRegistro__enviar {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+  width: 100px;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra {
+  display: none;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral {
+  display: flex;
+  width: 15%;
   flex-direction: column;
   align-self: flex-start;
   padding: 1rem 0;
 }
-.cuerpo__paginaCompras .paginaCompras__menuLateral .menuLateral__textoProvisorio {
-  display: flex;
-  margin-block: 0;
-  margin-inline: 0;
-  color: greenyellow;
-  padding: 1rem;
-  text-align: center;
-}
-.cuerpo__paginaCompras .paginaCompras__contenedorProductos {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  justify-content: space-around;
-  margin: 0.5rem 0;
-  align-items: center;
-}
-.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedroProductos__boton {
-  background-color: rgb(16, 43, 6);
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__botonCierreSesion {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
   color: white;
-  width: 150px;
-  border: 1px solid white;
-  font-size: 16px;
   border-radius: 10px;
-  text-align: center;
-  padding: 1rem;
+  border: 1px solid white;
 }
-.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque {
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__secciones {
+  display: flex;
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: rgb(16, 43, 6);
+  margin: 0.5rem;
+  border-radius: 10px;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: end;
+  width: 65%;
   flex-wrap: wrap;
 }
-.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha {
-  color: white;
-  background-color: rgb(159, 216, 157);
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos .grillaDeProductos__contenedor {
+  width: 140px;
+  background-color: rgb(126, 153, 116);
+  padding: 1rem;
   border-radius: 10px;
-  margin: 0.5rem;
+  border: 2px solid rgb(16, 43, 6);
   display: flex;
   flex-direction: column;
-  width: 20%;
+  align-items: center;
+  margin: 1rem;
 }
-.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha .ficha__titulo {
-  padding: 0.5rem 1rem;
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos .grillaDeProductos__contenedor .contenedor__productoTitulo {
+  padding-bottom: 1rem;
   text-align: center;
-}
-.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha .ficha__titulo .titulo__producto {
+  color: white;
   font-weight: bold;
-  text-shadow: 0 0 10px rgb(16, 43, 6);
 }
-.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha .ficha__imagen {
-  display: flex;
-  margin: 0 1rem 1rem 1rem;
-}
-.cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha .ficha__imagen .imagen__producto {
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos .grillaDeProductos__contenedor img {
   width: 100%;
   border-radius: 10px;
+  border: 2px solid rgb(16, 43, 6);
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos .grillaDeProductos__contenedor .contenedor__productoPrecio {
+  padding: 1rem 0 0.5rem 0;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos .grillaDeProductos__contenedor .contenedor__productoComandos {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 0;
+  align-items: center;
+  justify-content: center;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos .grillaDeProductos__contenedor .contenedor__productoComandos .productoComandos__cantidadComprada {
+  width: 30px;
+  height: 30px;
+  margin: 0 1rem;
+  text-align: center;
+  border: 1px rgb(16, 43, 6) solid;
+  color: rgb(16, 43, 6);
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos .grillaDeProductos__contenedor .contenedor__productoComandos .productoComandos__botonera {
+  width: 20px;
+  height: 20px;
+  border-style: none;
+  background-color: rgb(46, 73, 36);
+  color: white;
+  border: 1px rgb(16, 43, 6) solid;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos .grillaDeProductos__contenedor .contenedor__botonAgregarProducto {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+  width: 120px;
 }
 
 @media (max-width: 700px) {
@@ -256,6 +416,45 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   }
   .cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha {
     width: auto;
+  }
+}
+@media (max-width: 600px) {
+  .cuerpo__paginaCompras .paginaCompras__contenedorProductos {
+    flex-direction: column;
+    margin: 0;
+  }
+  .cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__botonesAcceso {
+    flex-direction: column;
+  }
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito {
+    width: 100%;
+  }
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro {
+    width: 80%;
+  }
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectores, .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorNombre,
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorApellido,
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorContrasenya,
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorMail {
+    flex-direction: column;
+  }
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectores .formularioRegistro__label, .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorNombre .formularioRegistro__label,
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorApellido .formularioRegistro__label,
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorContrasenya .formularioRegistro__label,
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorMail .formularioRegistro__label {
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectores .formularioRegistro__input, .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorNombre .formularioRegistro__input,
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorApellido .formularioRegistro__input,
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorContrasenya .formularioRegistro__input,
+  .cuerpo__paginaCompras .paginaCompras__sectorCarrito .sectorCarrito__formularioRegistro .formularioRegistro__sectorMail .formularioRegistro__input {
+    height: 25px;
+    width: 150px;
+    padding: 0 0.5rem;
+  }
+  .cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral {
+    width: 35%;
   }
 }
 .pieDePagina .pieDePagina__redes {

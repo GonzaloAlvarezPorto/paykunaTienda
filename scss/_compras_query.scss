@@ -13,3 +13,45 @@
         }
     }
 }
+
+@media (max-width:600px) {
+    .cuerpo__paginaCompras {
+        .paginaCompras__contenedorProductos {
+            flex-direction: column;
+            margin: 0;
+
+            .contenedorProductos__botonesAcceso {
+                flex-direction: column;
+            }
+        }
+
+        .paginaCompras__sectorCarrito {
+            width: 100%;
+
+            .sectorCarrito__formularioRegistro {
+                width: 80%;
+
+                .formularioRegistro__sectores {
+                    flex-direction: column;
+
+                    .formularioRegistro__label {
+                        text-align: center;
+                        padding: 0.5rem 0;
+                    }
+
+                    .formularioRegistro__input {
+                        height: 25px;
+                        width: 150px;
+                        padding: 0 0.5rem
+                    }
+                }
+            }
+        }
+
+        .paginaCompras__menuDeCompra {
+            .menuDeCompra__menuLateral {
+                width: 35%;
+            }
+        }
+    }
+}

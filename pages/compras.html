@@ -25,8 +25,9 @@
                     </div>
                 </a>
             </div>
-            <button id="abrir" class="encabezado__abrir">
-                <img class="abrir__imagen" src="../media/images/boton__apertura__menu.png" alt="abrir" title="abrir">
+            <button class="encabezado__abrir">
+                <img id="abrir" class="abrir__imagen" src="../media/images/boton__apertura__menu.png" alt="abrir"
+                    title="abrir">
             </button>
             <div id="nav" class="encabezado__menu row">
                 <ul class="menu__listado">
@@ -45,201 +46,167 @@
                             HACÉ TU COMPRA
                         </a>
                     </li>
-                    <button id="cerrar" class="listado__cerrar">
-                        <img class="cerrar__imagen" src="../media/images/flecha_blanca_asc.png" alt="cerrar"
-                            title="cerrar">
-                    </button>
                 </ul>
             </div>
         </div>
     </header>
     <main>
         <div class="cuerpo__paginaCompras">
-            <div class="paginaCompras__menuLateral">
-                <p class="menuLateral__textoProvisorio">
-                    Aca
+            <div class="paginaCompras__sectorCarrito" id="paginaCompras__sectorCarrito">
+                <div class="sectorCarrito__fichaUsuario" id="sectorCarrito__fichaUsuario">
+                    <p id="sectorCarrito__usuario" class="sectorCarrito__usuario"></p>
+                    <div id="sectorCarrito__datosUsuario" class="sectorCarrito__datosUsuario"></div>
+                </div>
+                <p id="sectorCarrito__texto" class="sectorCarrito__texto">
                 </p>
-                <p class="menuLateral__textoProvisorio">
-                    Van
+                <input class="sectorCarrito__contrasenyaIngresada" type="password" name="password"
+                    id="sectorCarrito__contrasenyaIngresada">
+                <div class="sectorCarrito__botonera" id="sectorCarrito__botonera">
+                    <button class="sectorCarrito__boton" id="sectorCarrito__botonIniciarSesion">Iniciar sesión</button>
+                </div>
+                <p class="sectorCarrito__texto" id="sectorCarrito__textoRegistro">
+                    Si no tenés cuenta pulsá en el botón para registrarte.
                 </p>
-                <p class="menuLateral__textoProvisorio">
-                    Muchas
-                </p>
-                <p class="menuLateral__textoProvisorio">
-                    Palabras
-                </p>
+                <button class="sectorCarrito__botonRegistro" id="sectorCarrito__botonRegistro">Registro</button>
+                <form class="sectorCarrito__formularioRegistro" id="sectorCarrito__formularioRegistro">
+                    <div class="formularioRegistro__sectorNombre" id="formularioRegistro__sectorNombre">
+                        <label class="formularioRegistro__label" for="formularioRegistro__nombre">Nombre:</label>
+                        <input class="formularioRegistro__input" id="formularioRegistro__nombre" type="text"
+                            name="nombre">
+                    </div>
+                    <div class="formularioRegistro__sectorApellido" id="formularioRegistro__sectorApellido">
+                        <label class="formularioRegistro__label" for="formularioRegistro__apellido">Apellido:</label>
+                        <input class="formularioRegistro__input" id="formularioRegistro__apellido" type="text"
+                            name="apellido">
+                    </div>
+                    <div class="formularioRegistro__sectorMail" id="formularioRegistro__sectorMail">
+                        <label class="formularioRegistro__label" for="formularioRegistro__mail">eMail:</label>
+                        <input class="formularioRegistro__input" id="formularioRegistro__mail" type="email" name="mail">
+                    </div>
+                    <div class="formularioRegistro__sectorContrasenya" id="formularioRegistro__sectorContrasenya">
+                        <label class="formularioRegistro__label"
+                            for="formularioRegistro__contrasenya">Contraseña:</label>
+                        <input class="formularioRegistro__input" id="formularioRegistro__contrasenya" type="password"
+                            name="contrasenya">
+                    </div>
+                    <button class="formularioRegistro__enviar" id="formularioRegistro__enviar" type="button">
+                        Enviar
+                    </button>
+                </form>
             </div>
-            <div class="paginaCompras__contenedorProductos">
-                <button class="contenedroProductos__boton" id="boton">Reservá acá 🛒</button>
-            <!--    <div class="contenedorProductos__bloque">
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
+            <div class="paginaCompras__menuDeCompra" id="paginaCompras__menuDeCompra">
+                <div class="menuDeCompra__menuLateral" id="menuDeCompra__menuLateral">
+                    <button class="menuLateral__secciones" id="menuLateral__seccionesGenerales">
+                        Generales
+                    </button>
+                    <button class="menuLateral__secciones" id="menuLateral__seccionesFrutas">
+                        Frutas
+                    </button>
+                    <button class="menuLateral__secciones" id="menuLateral__seccionesVerduras">
+                        Verduras
+                    </button>
+                    <button class="menuLateral__secciones" id="menuLateral__seccionesAlmacen">
+                        Almacén
+                    </button>
+                    <button class="menuLateral__secciones" id="menuLateral__seccionesMuebles">
+                        Muebles
+                    </button>
+                    <button class="menuLateral__botonCierreSesion" id="menuLateral__botonCierreSesion">
+                        Cerrar sesión
+                    </button>
                 </div>
-                <div class="contenedorProductos__bloque">
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
+                <div class="menuDeCompra__grillaDeProductos" id="menuDeCompra__grillaDeProductos">
+                    <!--<div class="grillaDeProductos__contenedor" id="grillaDeProductos__contenedor">
+                        <p class="contenedor__productoTitulo" id="contenedor__productoTitulo">
+                            Nombre producto
+                        </p>
+                        <img src="../media/images/foto__lechuga.jpg" alt="lechuga">
+                        <p class="contenedor__productoPrecio" id="contenedor__productoPrecio">
+                            $Precio producto
+                        </p>
+                        <form class="contenedor__productoComandos" id="contenedor__productoComandos">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraNegativa">-</button>
+                            <input class="productoComandos__cantidadComprada" id="productoComandos__cantidadComprada" type="text" value="0">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraPositiva">+</button>
+                        </form>
+                        <button class="contenedor__botonAgregarProducto" id="contenedor__botonAgregarProducto">Agregar</button>
                     </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
+                    <div class="grillaDeProductos__contenedor" id="grillaDeProductos__contenedor">
+                        <p class="contenedor__productoTitulo" id="contenedor__productoTitulo">
+                            Nombre producto
+                        </p>
+                        <img src="../media/images/foto__pepino.jpg" alt="pepino">
+                        <p class="contenedor__productoPrecio" id="contenedor__productoPrecio">
+                            $Precio producto
+                        </p>
+                        <form class="contenedor__productoComandos" id="contenedor__productoComandos">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraNegativa">-</button>
+                            <input class="productoComandos__cantidadComprada" id="productoComandos__cantidadComprada" type="text" value="0">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraPositiva">+</button>
+                        </form>
+                        <button class="contenedor__botonAgregarProducto" id="contenedor__botonAgregarProducto">Agregar</button>
                     </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
+                    <div class="grillaDeProductos__contenedor" id="grillaDeProductos__contenedor">
+                        <p class="contenedor__productoTitulo" id="contenedor__productoTitulo">
+                            Nombre producto
+                        </p>
+                        <img src="../media/images/foto__remolacha.jpg" alt="remolacha">
+                        <p class="contenedor__productoPrecio" id="contenedor__productoPrecio">
+                            $Precio producto
+                        </p>
+                        <form class="contenedor__productoComandos" id="contenedor__productoComandos">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraNegativa">-</button>
+                            <input class="productoComandos__cantidadComprada" id="productoComandos__cantidadComprada" type="text" value="0">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraPositiva">+</button>
+                        </form>
+                        <button class="contenedor__botonAgregarProducto" id="contenedor__botonAgregarProducto">Agregar</button>
                     </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
+                    <div class="grillaDeProductos__contenedor" id="grillaDeProductos__contenedor">
+                        <p class="contenedor__productoTitulo" id="contenedor__productoTitulo">
+                            Nombre producto
+                        </p>
+                        <img src="../media/images/flecha_blanca_asc.png" alt="flecha_blanca_asc">
+                        <p class="contenedor__productoPrecio" id="contenedor__productoPrecio">
+                            $Precio producto
+                        </p>
+                        <form class="contenedor__productoComandos" id="contenedor__productoComandos">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraNegativa">-</button>
+                            <input class="productoComandos__cantidadComprada" id="productoComandos__cantidadComprada" type="text" value="0">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraPositiva">+</button>
+                        </form>
+                        <button class="contenedor__botonAgregarProducto" id="contenedor__botonAgregarProducto">Agregar</button>
                     </div>
+                    <div class="grillaDeProductos__contenedor" id="grillaDeProductos__contenedor">
+                        <p class="contenedor__productoTitulo" id="contenedor__productoTitulo">
+                            Nombre producto
+                        </p>
+                        <img src="../media/images/facebook.png" alt="facebook">
+                        <p class="contenedor__productoPrecio" id="contenedor__productoPrecio">
+                            $Precio producto
+                        </p>
+                        <form class="contenedor__productoComandos" id="contenedor__productoComandos">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraNegativa">-</button>
+                            <input class="productoComandos__cantidadComprada" id="productoComandos__cantidadComprada" type="text" value="0">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraPositiva">+</button>
+                        </form>
+                        <button class="contenedor__botonAgregarProducto" id="contenedor__botonAgregarProducto">Agregar</button>
+                    </div>
+                    <div class="grillaDeProductos__contenedor" id="grillaDeProductos__contenedor">
+                        <p class="contenedor__productoTitulo" id="contenedor__productoTitulo">
+                            Nombre producto
+                        </p>
+                        <img src="../media/images/instagram.png" alt="instagram">
+                        <p class="contenedor__productoPrecio" id="contenedor__productoPrecio">
+                            $Precio producto
+                        </p>
+                        <form class="contenedor__productoComandos" id="contenedor__productoComandos">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraNegativa">-</button>
+                            <input class="productoComandos__cantidadComprada" id="productoComandos__cantidadComprada" type="text" value="0">
+                            <button class="productoComandos__botonera" id="productoComandos__botoneraPositiva">+</button>
+                        </form>
+                        <button class="contenedor__botonAgregarProducto" id="contenedor__botonAgregarProducto">Agregar</button>
+                    </div>-->
                 </div>
-                <div class="contenedorProductos__bloque">
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                </div>
-                <div class="contenedorProductos__bloque">
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                    <div class="contenedorProductos__ficha">
-                        <div class="ficha__titulo">
-                            <p class="titulo__producto">
-                                Pepino
-                            </p>
-                        </div>
-                        <div class="ficha__imagen">
-                            <img class="imagen__producto" src="../media/images/foto__pepino.jpg" alt="producto">
-                        </div>
-                    </div>
-                </div>
-                -->
             </div>
         </div>
     </main>
@@ -273,7 +240,6 @@
         </div>
     </footer>
     <script src="../js/main.js"></script>
-    <script src="../js/carrito.js"></script>
 </body>
 
 </html>
