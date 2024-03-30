@@ -170,6 +170,44 @@
                 border: 1px solid white;
             }
 
+            .menuLateral__botonBorrarCarrito {
+                background-color: $colorFondo;
+                margin: 0.5rem;
+                padding: 0.5rem 1rem;
+                border-style: none;
+                color: white;
+                border-radius: 10px;
+                border: 1px solid white;
+            }
+
+            .menuLateral__contenedorProductosEnCarrito {
+                display: flex;
+                flex-direction: row;
+
+                .contenedorProductosEnCarrito__productoEnCarrito {
+                    background-color: $colorFondo;
+                    margin: 0.5rem;
+                    padding: 0.5rem 1rem;
+                    border-style: none;
+                    color: white;
+                    border-radius: 10px;
+                    border: 1px solid white;
+
+                    .productoEnCarrito__titulo {
+                        font-size: 10px;
+                        margin-bottom: 0.2rem;
+                    }
+                    .productoEnCarrito__cantidad {
+                        font-size: 10px;
+                        margin-bottom: 0.2rem;
+                    }
+                    .productoEnCarrito__total {
+                        font-size: 10px;
+                        margin-bottom: 0.2rem;
+                    }
+                }
+            }
+
             .menuLateral__secciones {
                 display: flex;
                 color: white;
@@ -179,13 +217,23 @@
                 margin: 0.5rem;
                 border-radius: 10px;
             }
+
+            .menuLateral__botonRealizarCompra {
+                background-color: $colorFondo;
+                margin: 0.5rem;
+                padding: 0.5rem 1rem;
+                border-style: none;
+                color: white;
+                border-radius: 10px;
+                border: 1px solid white;
+            }
         }
 
         .menuDeCompra__grillaDeProductos {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
-            align-items: end;
+            align-items: start;
             width: 65%;
             flex-wrap: wrap;
 
@@ -233,7 +281,7 @@
                         height: 30px;
                         margin: 0 1rem;
                         text-align: center;
-                        border:1px $colorCabecera solid;
+                        border: 1px $colorCabecera solid;
                         color: $colorCabecera;
                     }
 
@@ -243,7 +291,7 @@
                         border-style: none;
                         background-color: $colorFondoPrincipalHover;
                         color: white;
-                        border:1px $colorCabecera solid;
+                        border: 1px $colorCabecera solid;
                     }
                 }
 

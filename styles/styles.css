@@ -328,6 +328,40 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   border-radius: 10px;
   border: 1px solid white;
 }
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__botonBorrarCarrito {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__contenedorProductosEnCarrito {
+  display: flex;
+  flex-direction: row;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__contenedorProductosEnCarrito .contenedorProductosEnCarrito__productoEnCarrito {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__contenedorProductosEnCarrito .contenedorProductosEnCarrito__productoEnCarrito .productoEnCarrito__titulo {
+  font-size: 10px;
+  margin-bottom: 0.2rem;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__contenedorProductosEnCarrito .contenedorProductosEnCarrito__productoEnCarrito .productoEnCarrito__cantidad {
+  font-size: 10px;
+  margin-bottom: 0.2rem;
+}
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__contenedorProductosEnCarrito .contenedorProductosEnCarrito__productoEnCarrito .productoEnCarrito__total {
+  font-size: 10px;
+  margin-bottom: 0.2rem;
+}
 .cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__secciones {
   display: flex;
   color: white;
@@ -337,11 +371,20 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   margin: 0.5rem;
   border-radius: 10px;
 }
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__botonRealizarCompra {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
 .cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: end;
+  align-items: start;
   width: 65%;
   flex-wrap: wrap;
 }
