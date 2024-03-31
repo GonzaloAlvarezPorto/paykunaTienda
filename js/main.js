@@ -1,264 +1,25 @@
-//Apertura y cierre menú cabecera 24-3
-let nav = document.getElementById("nav");
-let abrir = document.getElementById("abrir");
-let menuAbierto = false;
-
-abrir.addEventListener("click", () => {
-    if (menuAbierto) {
-        nav.classList.remove("visible");
-        abrir.src = "../media/images/boton__apertura__menu.png";
-        abrir.alt = "abrir";
-        abrir.title = "abrir"
-    }
-    else {
-        abrir.src = "../media/images/flecha_blanca_asc2.png";
-        abrir.alt = "cerrar";
-        abrir.title = "cerrar"
-        nav.classList.add("visible");
-    }
-    menuAbierto = !menuAbierto;
-});
-
-//Funcion primera letra mayúscula
+//Funciones
+//Funcion que devuelve la primer letra en mayúscula de cualquier cadena
 function primeraLetraMayuscula(cadena) {
     return cadena.charAt(0).toUpperCase() + cadena.slice(1);
-}
+};
 
-//Funcionalidades eCommerce
-let usuarioGuardado = localStorage.getItem("usuario"); //Recupera el usuario que haya quedado guardado
-let apellidoGuardado = localStorage.getItem("apellido"); //Recupera el apellido que haya quedado guardado
-let mailGuardado = localStorage.getItem("mail");
-let contrasenyaGuardada = localStorage.getItem("contrasenya"); //Recupera la contraseña que haya ingresado el usuario 
+//Funcion que comprueba si la contraseña guardada y la contraseña ingresada coinciden
+function coincideContrasenya() {
+    let paginaCompras__sectorCarrito = document.getElementById("paginaCompras__sectorCarrito");
+    paginaCompras__sectorCarrito.style.display = "none";
+    queAparezcaElCarrito();
+};
 
-//Bienvenida dependiendo del usuario
-let cartelBienvenida; //Inicializamos el texto de bienvnida
-let primerLetraUsuario;
-
-let sectorCarrito__usuario = document.getElementById("sectorCarrito__usuario");
-
-sectorCarrito__usuario.addEventListener("mouseover", () => {
-    let sectorCarrito__datosUsuario = document.getElementById("sectorCarrito__datosUsuario");
-
-    let textoParaMostrar = document.getElementById("sectorCarrito__datosUsuario");
-
-    textoParaMostrar.innerHTML = `Nombre: ${usuarioGuardado}<br>Apellido: ${apellidoGuardado}<br>Mail: ${mailGuardado}`;
-
-    sectorCarrito__datosUsuario.style.display = "flex";
-});
-
-sectorCarrito__usuario.addEventListener("mouseout", () => {
-    let sectorCarrito__datosUsuario = document.getElementById("sectorCarrito__datosUsuario");
-
-    sectorCarrito__datosUsuario.style.display = "none";
-});
-
-let agregarCartelBienvenida = document.getElementById("sectorCarrito__texto");
-let agregarPrimerLetraUsuario = document.getElementById("sectorCarrito__usuario");
-
-//Registrarse
-if (usuarioGuardado === null) {
-    cartelBienvenida = `Hola, tenés que registrarte para acceder al carrito`;
-    agregarPrimerLetraUsuario.innerText += `-`;
-
-    let sectorCarrito__contrasenyaIngresada = document.getElementById("sectorCarrito__contrasenyaIngresada");
-    let sectorCarrito__botonera = document.getElementById("sectorCarrito__botonera");
-    let sectorCarrito__texto = document.getElementById("sectorCarrito__texto");
-    let sectorCarrito__usuario = document.getElementById("sectorCarrito__usuario");
-
-    sectorCarrito__usuario.style.display = "none";
-    sectorCarrito__contrasenyaIngresada.style.display = "none";
-    sectorCarrito__botonera.style.display = "none";
-    sectorCarrito__texto.style.display = "none";
-}
-//Loguearse
-else {
-    cartelBienvenida = `Hola ${usuarioGuardado} ingresá tu contraseña para corroborar que sos vos.`;
-    agregarPrimerLetraUsuario.innerHTML += usuarioGuardado[0] + apellidoGuardado[0];
-    agregarCartelBienvenida.innerHTML += cartelBienvenida;
-}
-
+//Funcion que hace que el carrito sea visible
 function queAparezcaElCarrito() {
     let paginaCompras__menuDeCompra = document.getElementById("paginaCompras__menuDeCompra");
     paginaCompras__menuDeCompra.style.display = "flex";
-}
+};
 
-function coincideContrasenya() {
-
-    let paginaCompras__sectorCarrito = document.getElementById("paginaCompras__sectorCarrito");
-    paginaCompras__sectorCarrito.style.display = "none";
-
-    queAparezcaElCarrito();
-}
-
-let sectorCarrito__botonIniciarSesion = document.getElementById("sectorCarrito__botonIniciarSesion");
-
-sectorCarrito__botonIniciarSesion.addEventListener("click", () => {
-    let sectorCarrito__contrasenyaIngresada = document.getElementById("sectorCarrito__contrasenyaIngresada").value;
-
-    document.getElementById("sectorCarrito__contrasenyaIngresada").value = "";
-
-    if (sectorCarrito__contrasenyaIngresada !== contrasenyaGuardada || sectorCarrito__contrasenyaIngresada === null) {
-        alert("Probá de nuevo o registrate");
-    }
-    else {
-        coincideContrasenya();
-    }
-});
-
-//Funciones comunes entre logueo y registro
-
-//Cierre sesión
-let menuLateral__botonCierreSesion = document.getElementById("menuLateral__botonCierreSesion");
-
-menuLateral__botonCierreSesion.addEventListener("click", () => {
-    localStorage.clear();
-    window.location.reload();
-})
-
-//Registro
-let sectorCarrito__botonRegistro = document.getElementById("sectorCarrito__botonRegistro");
-let sectorCarrito__formularioRegistro = document.getElementById("sectorCarrito__formularioRegistro");
-let sectorCarrito__textoRegistro = document.getElementById("sectorCarrito__textoRegistro");
-let sectorCarrito__fichaUsuario = document.getElementById("sectorCarrito__fichaUsuario");
-let sectorCarrito__botonera = document.getElementById("sectorCarrito__botonera");
-
-sectorCarrito__botonRegistro.addEventListener("click", () => {
-    localStorage.clear();
-
-    sectorCarrito__botonRegistro.style.display = "none";
-    sectorCarrito__fichaUsuario.style.display = "none";
-    sectorCarrito__textoRegistro.style.display = "none";
-    sectorCarrito__contrasenyaIngresada.style.display = "none";
-    sectorCarrito__botonera.style.display = "none";
-    agregarCartelBienvenida.style.display = "none";
-
-    sectorCarrito__formularioRegistro.style.display = "flex";
-
-    let formularioRegistro__enviar = document.getElementById("formularioRegistro__enviar");
-
-    formularioRegistro__enviar.addEventListener("click", () => {
-        let formularioRegistro__nombre = document.getElementById("formularioRegistro__nombre").value;
-        let formularioRegistro__apellido = document.getElementById("formularioRegistro__apellido").value;
-        let formularioRegistro__contrasenya = document.getElementById("formularioRegistro__contrasenya").value;
-        let formularioRegistro__mail = document.getElementById("formularioRegistro__mail").value;
-
-        if (formularioRegistro__nombre === null || !isNaN(formularioRegistro__nombre)) {
-            alert("Ingresá nuevamente tu nombre, no es apropiado");
-            return;
-        }
-
-        if (formularioRegistro__apellido === null || !isNaN(formularioRegistro__apellido)) {
-            alert("Ingresá nuevamente tu apellido, no es apropiado");
-            return;
-        }
-
-        if (formularioRegistro__mail === null || !isNaN(formularioRegistro__mail)) {
-            alert("Igresá nuevamente tu mail, no es válido");
-            return;
-        }
-
-        if (formularioRegistro__contrasenya === null || formularioRegistro__contrasenya.length < 8) {
-            alert("Contraseña incorrecta, tiene que tener mínimo 8 dígitos");
-            return;
-        }
-
-        usuarioIngresado = localStorage.setItem("usuario", primeraLetraMayuscula(formularioRegistro__nombre));
-        apellidoIngresado = localStorage.setItem("apellido", primeraLetraMayuscula(formularioRegistro__apellido));
-        contrsenyaIngresada = localStorage.setItem("contrasenya", formularioRegistro__contrasenya);
-        mailIngresado = localStorage.setItem("mail", formularioRegistro__mail);
-
-        paginaCompras__sectorCarrito.style.display = "none";
-
-        queAparezcaElCarrito();
-    });
-});
-
-const productos = [
-    {
-        nombre: "lechuga",
-        imagen: "../media/images/foto__lechuga.jpg",
-        precio: "1000",
-        agrupador: "verduras"
-    },
-    {
-        nombre: "remolacha",
-        imagen: "../media/images/foto__remolacha.jpg",
-        precio: "1500",
-        agrupador: "verduras"
-    },
-    {
-        nombre: "pepino",
-        imagen: "../media/images/foto__pepino.jpg",
-        precio: "2000",
-        agrupador: "verduras"
-    },
-    {
-        nombre: "sillón",
-        imagen: "../media/images/foto__sillon.jpg",
-        precio: "2000",
-        agrupador: "muebles"
-    },
-    {
-        nombre: "yerba",
-        imagen: "../media/images/foto__yerba.jpg",
-        precio: "2000",
-        agrupador: "almacén"
-    },
-    {
-        nombre: "palta",
-        imagen: "../media/images/foto__palta.jpg",
-        precio: "2000",
-        agrupador: "frutas"
-    },
-    {
-        nombre: "silla",
-        imagen: "../media/images/foto__silla.jpeg",
-        precio: "2000",
-        agrupador: "muebles"
-    },
-    {
-        nombre: "sandía",
-        imagen: "../media/images/foto__sandia.jpg",
-        precio: "2000",
-        agrupador: "frutas"
-    },
-    {
-        nombre: "mesa",
-        imagen: "../media/images/foto__mesa.jpeg",
-        precio: "2000",
-        agrupador: "muebles"
-    },
-    {
-        nombre: "frutilla",
-        imagen: "../media/images/foto__frutilla.jpg",
-        precio: "2000",
-        agrupador: "frutas"
-    },
-    {
-        nombre: "banana",
-        imagen: "../media/images/foto__banana.jpg",
-        precio: "2000",
-        agrupador: "frutas"
-    },
-    {
-        nombre: "leche",
-        imagen: "../media/images/foto__leche.jpg",
-        precio: "2000",
-        agrupador: "almacén"
-    },
-    {
-        nombre: "arroz",
-        imagen: "../media/images/foto__arroz.jpeg",
-        precio: "2000",
-        agrupador: "almacén"
-    }
-];
-
-const productosJSON = JSON.stringify(productos, null, 4);
-
+//Funcion que filtra los productos dependiendo del agrupador
 function filtrarPorAgrupador(productosJSON, agrupador) {
     let menuDeCompra__grillaDeProductos = document.getElementById("menuDeCompra__grillaDeProductos");
-
 
     menuDeCompra__grillaDeProductos.innerHTML = "";
 
@@ -271,46 +32,26 @@ function filtrarPorAgrupador(productosJSON, agrupador) {
             menuDeCompra__grillaDeProductos.appendChild(productoDOM);
         }
     });
-}
+};
 
-let botonBorrarCarrito = document.createElement("button");
-botonBorrarCarrito.textContent = "Borrar Carrito";
-botonBorrarCarrito.className = "menuLateral__botonBorrarCarrito";
-
-// Función para comprobar si hay productos en el carrito
+//Función que comprueba si en el carrito hay algún producto reservado
 function hayProductosEnCarrito() {
     let productosEnLocalStorage = JSON.parse(localStorage.getItem('productos')) || [];
     let totalCantidadProductos = productosEnLocalStorage.reduce((total, producto) => total + producto.cantidad, 0);
     return totalCantidadProductos > 0;
-}
+};
 
-// Función para mostrar u ocultar el botón "Borrar Carrito" según haya productos en el carrito
+//Función que dependiendo de si hay productos en el carrito o no, nos muestra el botón para borrar todos los productos
+//cargados en el carrito
 function actualizarVisibilidadBotonBorrarCarrito() {
     if (hayProductosEnCarrito()) {
         botonBorrarCarrito.style.display = "block";
     } else {
         botonBorrarCarrito.style.display = "none";
     }
-}
-
-// Agregar evento de escucha para borrar el carrito
-botonBorrarCarrito.addEventListener('click', () => {
-
-    localStorage.removeItem('productos');
-    actualizarVisibilidadBotonBorrarCarrito();
-    alert("El carrito ha sido borrado correctamente.");
-    location.reload();
-});
-
-// Agregar el botón al contenedor deseado en tu interfaz
-let menuDeCompraMenuLateral = document.getElementById('menuDeCompra__menuLateral');
-menuDeCompraMenuLateral.appendChild(botonBorrarCarrito);
-
-// Llamar a la función para actualizar la visibilidad del botón cuando se cargue la página
-window.onload = function () {
-    actualizarVisibilidadBotonBorrarCarrito();
 };
 
+//Función que crea la ficha de productos en el carrito
 function crearProductoDOM(producto) {
 
     let grillaDeProductos__contenedor = document.createElement("div");
@@ -406,6 +147,7 @@ function crearProductoDOM(producto) {
                     productosEnLocalStorage.push({
                         nombre: nombreProducto,
                         cantidad: cantidadComprada,
+                        precio: precioProducto,
                         total: cantidadComprada * precioProducto
                     });
                 }
@@ -425,7 +167,8 @@ function crearProductoDOM(producto) {
             productoComandos__cantidadComprada.value = "0";
             contenedor__botonAgregarProducto.textContent = "Agregar";
 
-            mostrarProductosEnCarrito();
+            mostrarProductosEnCarrito(menuLateral__contenedorProductosEnCarrito);
+            mostrarProductosEnCarrito(cierreCompra__contenedorDetallesCompra);
             actualizarVisibilidadBotonBorrarCarrito();
         } else {
 
@@ -436,18 +179,12 @@ function crearProductoDOM(producto) {
     return grillaDeProductos__contenedor;
 };
 
-const menuLateral__botonRealizarCompra = document.getElementById('menuLateral__botonRealizarCompra');
-
-// Agregar un evento click al botón "Realizar Compra"
-menuLateral__botonRealizarCompra.addEventListener('click', () => {
-    // Calcular la suma de la cantidad de productos en el carrito
-});
-
-function mostrarProductosEnCarrito() {
+//Función que muestra todos los productos agregados al carrito
+function mostrarProductosEnCarrito(contenedor) {
     let productosEnLocalStorage = JSON.parse(localStorage.getItem('productos')) || [];
-    let contenedorProductos = document.getElementById('menuLateral__contenedorProductosEnCarrito');
+    contenedor.innerHTML = '';
 
-    contenedorProductos.innerHTML = '';
+    let subtotal = 0;
 
     productosEnLocalStorage.forEach(producto => {
         if (producto.cantidad > 0) {
@@ -455,12 +192,16 @@ function mostrarProductosEnCarrito() {
             productoElemento.className = 'contenedorProductosEnCarrito__productoEnCarrito';
 
             let nombreProducto = document.createElement('p');
-            nombreProducto.textContent = primeraLetraMayuscula(producto.nombre);
+            nombreProducto.textContent = `Producto: ${primeraLetraMayuscula(producto.nombre)}`;
             nombreProducto.className = "productoEnCarrito__titulo";
 
             let cantidadProducto = document.createElement('p');
             cantidadProducto.textContent = `Cantidad: ${producto.cantidad}`;
             cantidadProducto.className = "productoEnCarrito__cantidad";
+
+            let precioProducto = document.createElement('p');
+            precioProducto.textContent = `Unitario: $${producto.precio}`;
+            precioProducto.className = "productoEnCarrito__precioUnitario";
 
             let totalProducto = document.createElement('p');
             totalProducto.textContent = `Total: $${producto.total}`;
@@ -468,18 +209,21 @@ function mostrarProductosEnCarrito() {
 
             productoElemento.appendChild(nombreProducto);
             productoElemento.appendChild(cantidadProducto);
+            productoElemento.appendChild(precioProducto);
             productoElemento.appendChild(totalProducto);
 
-            contenedorProductos.appendChild(productoElemento);
+            contenedor.appendChild(productoElemento);
+
+            subtotal += producto.total;
         }
     });
 
-    contenedorProductos.style.display = productosEnLocalStorage.some(producto => producto.cantidad > 0) ? 'block' : 'none';
+    contenedor.style.display = subtotal > 0 ? 'block' : 'none';
+
+    document.getElementById('cierreCompra__subtotalCompra').innerHTML = `El importe total de tu compra es <br> $${subtotal}`;
 }
 
-// Llamamos a esta función cada vez que se agrega, quita o borra un producto del carrito
-mostrarProductosEnCarrito();
-
+//Función que parsea todos los productos en formato JSON
 function mostrarTodos(productosJSON) {
     let menuDeCompra__grillaDeProductos = document.getElementById("menuDeCompra__grillaDeProductos");
 
@@ -492,6 +236,346 @@ function mostrarTodos(productosJSON) {
         menuDeCompra__grillaDeProductos.appendChild(productoDOM);
     });
 };
+// -------------------------------------------
+
+//Menu de opciones
+let nav = document.getElementById("nav");
+let abrir = document.getElementById("abrir");
+let menuAbierto = false;
+
+abrir.addEventListener("click", () => {
+    if (menuAbierto) {
+        nav.classList.remove("visible");
+        abrir.src = "../media/images/boton__apertura__menu.png";
+        abrir.alt = "abrir";
+        abrir.title = "abrir";
+    } else {
+        abrir.src = "../media/images/flecha_blanca_asc2.png";
+        abrir.alt = "cerrar";
+        abrir.title = "cerrar";
+        nav.classList.add("visible");
+    }
+    menuAbierto = !menuAbierto;
+});
+// -------------------------------------------
+
+//PARTE DE INGRESO DE USUARIO
+//Datos del usuario registrado
+let usuarioGuardado = localStorage.getItem("usuario");
+let apellidoGuardado = localStorage.getItem("apellido");
+let mailGuardado = localStorage.getItem("mail");
+let contrasenyaGuardada = localStorage.getItem("contrasenya");
+
+//Muestra los datos del usuario al pasar con el mouse sobre sus iniciales
+let primerLetraUsuario;
+let sectorCarrito__usuario = document.getElementById("sectorCarrito__usuario");
+
+sectorCarrito__usuario.addEventListener("mouseover", () => {
+    let sectorCarrito__datosUsuario = document.getElementById("sectorCarrito__datosUsuario");
+    let textoParaMostrar = document.getElementById("sectorCarrito__datosUsuario");
+    textoParaMostrar.innerHTML = `Nombre: ${usuarioGuardado}<br>Apellido: ${apellidoGuardado}<br>Mail: ${mailGuardado}`;
+    sectorCarrito__datosUsuario.style.display = "flex";
+});
+
+sectorCarrito__usuario.addEventListener("mouseout", () => {
+    let sectorCarrito__datosUsuario = document.getElementById("sectorCarrito__datosUsuario");
+    sectorCarrito__datosUsuario.style.display = "none";
+});
+
+//Mensaje de bienvenida
+let cartelBienvenida;
+
+let agregarCartelBienvenida = document.getElementById("sectorCarrito__texto");
+let agregarPrimerLetraUsuario = document.getElementById("sectorCarrito__usuario");
+
+//Comprobador de si usuario está guardado o no
+if (usuarioGuardado === null) {
+    cartelBienvenida = `Hola, tenés que registrarte para acceder al carrito`;
+    agregarPrimerLetraUsuario.innerText += `-`;
+
+    let sectorCarrito__contrasenyaIngresada = document.getElementById("sectorCarrito__contrasenyaIngresada");
+    let sectorCarrito__botonera = document.getElementById("sectorCarrito__botonera");
+    let sectorCarrito__texto = document.getElementById("sectorCarrito__texto");
+    let sectorCarrito__usuario = document.getElementById("sectorCarrito__usuario");
+
+    sectorCarrito__usuario.style.display = "none";
+    sectorCarrito__contrasenyaIngresada.style.display = "none";
+    sectorCarrito__botonera.style.display = "none";
+    sectorCarrito__texto.style.display = "none";
+} else {
+    cartelBienvenida = `Hola ${usuarioGuardado} ingresá tu contraseña para corroborar que sos vos.`;
+    agregarPrimerLetraUsuario.innerHTML += usuarioGuardado[0] + apellidoGuardado[0];
+    agregarCartelBienvenida.innerHTML += cartelBienvenida;
+}
+
+//Validación de contraseña
+let sectorCarrito__botonIniciarSesion = document.getElementById("sectorCarrito__botonIniciarSesion");
+
+sectorCarrito__botonIniciarSesion.addEventListener("click", () => {
+    let sectorCarrito__contrasenyaIngresada = document.getElementById("sectorCarrito__contrasenyaIngresada").value;
+    document.getElementById("sectorCarrito__contrasenyaIngresada").value = "";
+
+    if (sectorCarrito__contrasenyaIngresada !== contrasenyaGuardada || sectorCarrito__contrasenyaIngresada === null) {
+        alert("Probá de nuevo o registrate");
+    } else {
+        coincideContrasenya();
+    }
+});
+
+//Cierre de sesión
+let menuLateral__botonCierreSesion = document.getElementById("menuLateral__botonCierreSesion");
+
+menuLateral__botonCierreSesion.addEventListener("click", () => {
+    localStorage.clear();
+    window.location.reload();
+});
+
+//Registrar y guardar datos de usuario
+let sectorCarrito__botonRegistro = document.getElementById("sectorCarrito__botonRegistro");
+let sectorCarrito__formularioRegistro = document.getElementById("sectorCarrito__formularioRegistro");
+let sectorCarrito__textoRegistro = document.getElementById("sectorCarrito__textoRegistro");
+let sectorCarrito__fichaUsuario = document.getElementById("sectorCarrito__fichaUsuario");
+let sectorCarrito__botonera = document.getElementById("sectorCarrito__botonera");
+
+//Al pulsar en registro borra datos anteriores y muestra el formulario de registro
+sectorCarrito__botonRegistro.addEventListener("click", () => {
+    localStorage.clear();
+
+    sectorCarrito__botonRegistro.style.display = "none";
+    sectorCarrito__fichaUsuario.style.display = "none";
+    sectorCarrito__textoRegistro.style.display = "none";
+    sectorCarrito__contrasenyaIngresada.style.display = "none";
+    sectorCarrito__botonera.style.display = "none";
+    agregarCartelBienvenida.style.display = "none";
+
+    sectorCarrito__formularioRegistro.style.display = "flex";
+
+    let formularioRegistro__enviar = document.getElementById("formularioRegistro__enviar");
+
+    //Validación de datos de registro, si todo está ok, aparece el carrito
+    formularioRegistro__enviar.addEventListener("click", () => {
+        let formularioRegistro__nombre = document.getElementById("formularioRegistro__nombre").value;
+        let formularioRegistro__apellido = document.getElementById("formularioRegistro__apellido").value;
+        let formularioRegistro__contrasenya = document.getElementById("formularioRegistro__contrasenya").value;
+        let formularioRegistro__mail = document.getElementById("formularioRegistro__mail").value;
+
+        if (formularioRegistro__nombre === null || !isNaN(formularioRegistro__nombre)) {
+            alert("Ingresá nuevamente tu nombre, no es apropiado");
+            return;
+        }
+
+        if (formularioRegistro__apellido === null || !isNaN(formularioRegistro__apellido)) {
+            alert("Ingresá nuevamente tu apellido, no es apropiado");
+            return;
+        }
+
+        if (formularioRegistro__mail === null || !isNaN(formularioRegistro__mail)) {
+            alert("Igresá nuevamente tu mail, no es válido");
+            return;
+        }
+
+        if (formularioRegistro__contrasenya === null || formularioRegistro__contrasenya.length < 8) {
+            alert("Contraseña incorrecta, tiene que tener mínimo 8 dígitos");
+            return;
+        }
+
+        usuarioIngresado = localStorage.setItem("usuario", primeraLetraMayuscula(formularioRegistro__nombre));
+        apellidoIngresado = localStorage.setItem("apellido", primeraLetraMayuscula(formularioRegistro__apellido));
+        contrsenyaIngresada = localStorage.setItem("contrasenya", formularioRegistro__contrasenya);
+        mailIngresado = localStorage.setItem("mail", formularioRegistro__mail);
+
+        paginaCompras__sectorCarrito.style.display = "none";
+
+        queAparezcaElCarrito();
+    });
+});
+
+//SECTOR CARRITO
+//Listado de productos
+const productos = [
+    {
+        nombre: "lechuga",
+        imagen: "../media/images/foto__lechuga.jpg",
+        precio: "1000",
+        agrupador: "verduras"
+    },
+    {
+        nombre: "remolacha",
+        imagen: "../media/images/foto__remolacha.jpg",
+        precio: "1500",
+        agrupador: "verduras"
+    },
+    {
+        nombre: "pepino",
+        imagen: "../media/images/foto__pepino.jpg",
+        precio: "2000",
+        agrupador: "verduras"
+    },
+    {
+        nombre: "sillón",
+        imagen: "../media/images/foto__sillon.jpg",
+        precio: "2000",
+        agrupador: "muebles"
+    },
+    {
+        nombre: "yerba",
+        imagen: "../media/images/foto__yerba.jpg",
+        precio: "2000",
+        agrupador: "almacén"
+    },
+    {
+        nombre: "palta",
+        imagen: "../media/images/foto__palta.jpg",
+        precio: "2000",
+        agrupador: "frutas"
+    },
+    {
+        nombre: "silla",
+        imagen: "../media/images/foto__silla.jpeg",
+        precio: "2000",
+        agrupador: "muebles"
+    },
+    {
+        nombre: "sandía",
+        imagen: "../media/images/foto__sandia.jpg",
+        precio: "2000",
+        agrupador: "frutas"
+    },
+    {
+        nombre: "mesa",
+        imagen: "../media/images/foto__mesa.jpeg",
+        precio: "2000",
+        agrupador: "muebles"
+    },
+    {
+        nombre: "frutilla",
+        imagen: "../media/images/foto__frutilla.jpg",
+        precio: "2000",
+        agrupador: "frutas"
+    },
+    {
+        nombre: "banana",
+        imagen: "../media/images/foto__banana.jpg",
+        precio: "2000",
+        agrupador: "frutas"
+    },
+    {
+        nombre: "leche",
+        imagen: "../media/images/foto__leche.jpg",
+        precio: "2000",
+        agrupador: "almacén"
+    },
+    {
+        nombre: "arroz",
+        imagen: "../media/images/foto__arroz.jpeg",
+        precio: "2000",
+        agrupador: "almacén"
+    }
+];
+
+//Pasamos los objetos a formato JSON
+const productosJSON = JSON.stringify(productos, null, 4);
+
+//Creación del botón borrar carrito
+let botonBorrarCarrito = document.createElement("button");
+botonBorrarCarrito.textContent = "Borrar Carrito";
+botonBorrarCarrito.className = "menuLateral__botonBorrarCarrito";
+
+//Al pulsar el botón borrar carrito elimina todos los datos del carrito que hayan sido guardados
+botonBorrarCarrito.addEventListener('click', () => {
+
+    localStorage.removeItem('productos');
+    actualizarVisibilidadBotonBorrarCarrito();
+    alert("El carrito ha sido borrado correctamente.");
+
+    let menuLateral__contenedorProductosEnCarrito = document.getElementById("menuLateral__contenedorProductosEnCarrito");
+
+    menuLateral__contenedorProductosEnCarrito.style.display = "none";
+});
+
+let menuDeCompraMenuLateral = document.getElementById('menuDeCompra__menuLateral');
+menuDeCompraMenuLateral.appendChild(botonBorrarCarrito);
+
+document.addEventListener('DOMContentLoaded', function () {
+    actualizarVisibilidadBotonBorrarCarrito();
+});
+
+//Proceso de finalización de la compra
+const menuLateral__botonRealizarCompra = document.getElementById('menuLateral__botonRealizarCompra');
+
+menuLateral__botonRealizarCompra.addEventListener('click', () => {
+
+    if (!hayProductosEnCarrito()) {
+        alert("No hay productos en el carrito para comprar.");
+        return;
+    }
+
+    let paginaCompras__menuDeCompra = document.getElementById("paginaCompras__menuDeCompra");
+
+    paginaCompras__menuDeCompra.style.display = "none";
+    let paginaCompras__cierreCompra = document.getElementById("paginaCompras__cierreCompra");
+
+    paginaCompras__cierreCompra.style.display = "flex";
+});
+
+//Proceso para volver a tu compra antes de confirmarla
+const cierreCompra__volverCarrito = document.getElementById("cierreCompra__volverCarrito");
+
+cierreCompra__volverCarrito.addEventListener("click", () => {
+
+    let paginaCompras__cierreCompra = document.getElementById("paginaCompras__cierreCompra");
+
+    paginaCompras__cierreCompra.style.display = "none";
+
+    let paginaCompras__menuDeCompra = document.getElementById("paginaCompras__menuDeCompra");
+
+    paginaCompras__menuDeCompra.style.display = "flex";
+
+})
+
+//Proceso para hacer una nueva compra
+const confirmacionCompra__botonOtraCompra = document.getElementById("confirmacionCompra__botonOtraCompra");
+
+confirmacionCompra__botonOtraCompra.addEventListener("click", () => {
+
+    let paginaCompras__cierreCompra = document.getElementById("paginaCompras__cierreCompra");
+
+    paginaCompras__cierreCompra.style.display = "none";
+
+    localStorage.removeItem('productos');
+    actualizarVisibilidadBotonBorrarCarrito();
+
+    let menuLateral__contenedorProductosEnCarrito = document.getElementById("menuLateral__contenedorProductosEnCarrito");
+
+    menuLateral__contenedorProductosEnCarrito.style.display = "none";
+
+    let paginaCompras__menuDeCompra = document.getElementById("paginaCompras__menuDeCompra");
+
+    paginaCompras__menuDeCompra.style.display = "flex";
+
+    let paginasCompras__confirmacionCompra = document.getElementById("paginasCompras__confirmacionCompra");
+
+    paginasCompras__confirmacionCompra.style.display = "none";
+
+});
+
+//Validación final de la compra
+const cierreCompra__validacion = document.getElementById("cierreCompra__validacion");
+
+cierreCompra__validacion.addEventListener("click", () => {
+
+    let paginaCompras__cierreCompra = document.getElementById("paginaCompras__cierreCompra");
+
+    paginaCompras__cierreCompra.style.display = "none";
+
+    let paginasCompras__confirmacionCompra = document.getElementById("paginasCompras__confirmacionCompra");
+
+    paginasCompras__confirmacionCompra.style.display = "flex";
+
+    localStorage.removeItem('productos');
+});
+
+mostrarProductosEnCarrito(menuLateral__contenedorProductosEnCarrito);
 
 mostrarTodos(productosJSON);
 

@@ -7,7 +7,6 @@
     flex-direction: row-reverse;
 
     .paginaCompras__sectorCarrito {
-        width: 40%;
         display: flex;
         background-color: $colorFondoPrincipalHover;
         align-items: center;
@@ -192,16 +191,24 @@
                     color: white;
                     border-radius: 10px;
                     border: 1px solid white;
+                    
 
                     .productoEnCarrito__titulo {
                         font-size: 10px;
                         margin-bottom: 0.2rem;
                     }
+
                     .productoEnCarrito__cantidad {
                         font-size: 10px;
                         margin-bottom: 0.2rem;
                     }
+
                     .productoEnCarrito__total {
+                        font-size: 10px;
+                        margin-bottom: 0.2rem;
+                    }
+
+                    .productoEnCarrito__precioUnitario {
                         font-size: 10px;
                         margin-bottom: 0.2rem;
                     }
@@ -306,6 +313,122 @@
                     width: 120px;
                 }
             }
+        }
+    }
+
+    .paginaCompras__cierreCompra {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+
+        .cierreCompra__mensajeConfirmacion {
+            color: white;
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .cierreCompra__contenedorDetallesCompra {
+            background-color: $colorFondo;
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-style: none;
+            color: white;
+            border-radius: 10px;
+            border: 1px solid white;
+
+            .contenedorDetallesCompra__subTotalProducto {
+                margin-bottom: 1rem;
+            }
+
+            .contenedorDetallesCompra__totalCompra {
+                margin-top: 2rem;
+                background-color: $colorFondoPrincipalHover;
+                padding: 0.5rem;
+                border-radius: 10px;
+            }
+
+            .contenedorProductosEnCarrito__productoEnCarrito {
+                display: flex;
+                flex-direction: row;
+                padding: 0.5rem 0;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                .productoEnCarrito__cantidad {
+                    margin: 0 0.5rem;
+                }
+
+                .productoEnCarrito__precioUnitario {
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+
+        .cierreCompra__volverCarrito {
+            background-color: $colorFondo;
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-style: none;
+            color: white;
+            border-radius: 10px;
+            border: 1px solid white;
+        }
+
+        .cierreCompra__validacion {
+            background-color: $colorFondo;
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-style: none;
+            color: white;
+            border-radius: 10px;
+            border: 1px solid white;
+        }
+
+        .cierreCompra__subtotalCompra{
+            background-color: $colorFondo;
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-style: none;
+            color: white;
+            border-radius: 10px;
+            border: 1px solid white;
+            text-align: center;
+        }
+    }
+
+    .paginasCompras__confirmacionCompra {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+
+        .confirmacionCompra__texto {
+            color: white;
+            background-color: $colorFondo;
+            padding: 2rem;
+            margin: 2rem;
+            border-radius: 10px;
+            border: 1px white solid;
+        }
+
+        .confirmacionCompra__botonOtraCompra {
+            background-color: $colorFondo;
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-style: none;
+            color: white;
+            border-radius: 10px;
+            border: 1px solid white;
+        }
+
+        .confirmacionCompra__volverInicio {
+            background-color: $colorFondo;
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-style: none;
+            color: white;
+            border-radius: 10px;
+            border: 1px solid white;
+            text-decoration: none;
         }
     }
 }

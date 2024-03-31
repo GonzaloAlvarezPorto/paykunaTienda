@@ -178,7 +178,6 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   flex-direction: row-reverse;
 }
 .cuerpo__paginaCompras .paginaCompras__sectorCarrito {
-  width: 40%;
   display: flex;
   background-color: rgb(46, 73, 36);
   align-items: center;
@@ -362,6 +361,10 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   font-size: 10px;
   margin-bottom: 0.2rem;
 }
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__contenedorProductosEnCarrito .contenedorProductosEnCarrito__productoEnCarrito .productoEnCarrito__precioUnitario {
+  font-size: 10px;
+  margin-bottom: 0.2rem;
+}
 .cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__secciones {
   display: flex;
   color: white;
@@ -450,25 +453,109 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   border: 1px solid white;
   width: 120px;
 }
-
-@media (max-width: 700px) {
-  .cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha {
-    width: auto;
-  }
+.cuerpo__paginaCompras .paginaCompras__cierreCompra {
+  display: none;
+  flex-direction: column;
+  align-items: center;
 }
-@media (max-width: 600px) {
-  .cuerpo__paginaCompras .paginaCompras__contenedorProductos {
-    flex-direction: column;
-    margin: 0;
-  }
-  .cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__botonesAcceso {
-    flex-direction: column;
-  }
+.cuerpo__paginaCompras .paginaCompras__cierreCompra .cierreCompra__mensajeConfirmacion {
+  color: white;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+.cuerpo__paginaCompras .paginaCompras__cierreCompra .cierreCompra__contenedorDetallesCompra {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.cuerpo__paginaCompras .paginaCompras__cierreCompra .cierreCompra__contenedorDetallesCompra .contenedorDetallesCompra__subTotalProducto {
+  margin-bottom: 1rem;
+}
+.cuerpo__paginaCompras .paginaCompras__cierreCompra .cierreCompra__contenedorDetallesCompra .contenedorDetallesCompra__totalCompra {
+  margin-top: 2rem;
+  background-color: rgb(46, 73, 36);
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+.cuerpo__paginaCompras .paginaCompras__cierreCompra .cierreCompra__contenedorDetallesCompra .contenedorProductosEnCarrito__productoEnCarrito {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cuerpo__paginaCompras .paginaCompras__cierreCompra .cierreCompra__contenedorDetallesCompra .contenedorProductosEnCarrito__productoEnCarrito .productoEnCarrito__cantidad {
+  margin: 0 0.5rem;
+}
+.cuerpo__paginaCompras .paginaCompras__cierreCompra .cierreCompra__contenedorDetallesCompra .contenedorProductosEnCarrito__productoEnCarrito .productoEnCarrito__precioUnitario {
+  margin-right: 0.5rem;
+}
+.cuerpo__paginaCompras .paginaCompras__cierreCompra .cierreCompra__volverCarrito {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.cuerpo__paginaCompras .paginaCompras__cierreCompra .cierreCompra__validacion {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.cuerpo__paginaCompras .paginaCompras__cierreCompra .cierreCompra__subtotalCompra {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+  text-align: center;
+}
+.cuerpo__paginaCompras .paginasCompras__confirmacionCompra {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+.cuerpo__paginaCompras .paginasCompras__confirmacionCompra .confirmacionCompra__texto {
+  color: white;
+  background-color: rgb(6, 33, 0);
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 10px;
+  border: 1px white solid;
+}
+.cuerpo__paginaCompras .paginasCompras__confirmacionCompra .confirmacionCompra__botonOtraCompra {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.cuerpo__paginaCompras .paginasCompras__confirmacionCompra .confirmacionCompra__volverInicio {
+  background-color: rgb(6, 33, 0);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
   .cuerpo__paginaCompras .paginaCompras__sectorCarrito {
     width: 100%;
   }
@@ -498,6 +585,25 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   }
   .cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral {
     width: 35%;
+  }
+}
+@media (max-width: 700px) {
+  .cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__bloque .contenedorProductos__ficha {
+    width: auto;
+  }
+}
+@media (max-width: 600px) {
+  .cuerpo__paginaCompras .paginaCompras__contenedorProductos {
+    flex-direction: column;
+    margin: 0;
+  }
+  .cuerpo__paginaCompras .paginaCompras__contenedorProductos .contenedorProductos__botonesAcceso {
+    flex-direction: column;
   }
 }
 .pieDePagina .pieDePagina__redes {
