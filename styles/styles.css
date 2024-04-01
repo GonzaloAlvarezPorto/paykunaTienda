@@ -383,6 +383,12 @@ header .encabezado .encabezado__menu .menu__listado .listado__items .items__enla
   border-radius: 10px;
   border: 1px solid white;
 }
+.cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__menuLateral .menuLateral__botonRealizarCompra .botonRealizarCompra__aviso {
+  color: grey;
+  font-size: 8px;
+  display: none;
+  margin-top: 0.5rem;
+}
 .cuerpo__paginaCompras .paginaCompras__menuDeCompra .menuDeCompra__grillaDeProductos {
   display: flex;
   flex-direction: row;

@@ -91,6 +91,13 @@ function crearProductoDOM(producto) {
     productoComandos__botoneraPositiva.textContent = "+";
     productoComandos__botoneraPositiva.type = "button";
 
+    let contenedor__mensajeDeAviso = document.createElement("p");
+    contenedor__mensajeDeAviso.className = "contenedor__mensajeDeAviso";
+    contenedor__mensajeDeAviso.id = "contenedor__mensajeDeAviso";
+    contenedor__mensajeDeAviso.textContent = "";
+    contenedor__mensajeDeAviso.style.textAlign = "center";
+    contenedor__mensajeDeAviso.style.display = "none";
+
     let contenedor__botonAgregarProducto = document.createElement("button");
     contenedor__botonAgregarProducto.className = "contenedor__botonAgregarProducto";
     contenedor__botonAgregarProducto.id = "contenedor__botonAgregarProducto";
@@ -104,8 +111,10 @@ function crearProductoDOM(producto) {
     grillaDeProductos__contenedor.appendChild(imagenProducto);
     grillaDeProductos__contenedor.appendChild(contenedor__productoPrecio);
     grillaDeProductos__contenedor.appendChild(contenedor__productoComandos);
+    grillaDeProductos__contenedor.appendChild(contenedor__mensajeDeAviso);
     grillaDeProductos__contenedor.appendChild(contenedor__botonAgregarProducto);
-
+    
+    
     productoComandos__botoneraNegativa.addEventListener('click', () => {
         let cantidadComprada = parseInt(productoComandos__cantidadComprada.value);
         productoComandos__cantidadComprada.value = cantidadComprada - 1;
@@ -142,8 +151,8 @@ function crearProductoDOM(producto) {
                 if (productoExistente) {
                     productoExistente.cantidad += cantidadComprada;
                     productoExistente.total = productoExistente.cantidad * precioProducto;
+                    contenedor__mensajeDeAviso.style.display = "none";
                 } else {
-
                     productosEnLocalStorage.push({
                         nombre: nombreProducto,
                         cantidad: cantidadComprada,
@@ -157,7 +166,8 @@ function crearProductoDOM(producto) {
                     productoExistente.cantidad += cantidadComprada;
                     productoExistente.total = productoExistente.cantidad * precioProducto;
                 } else {
-                    alert(`No hay suficientes unidades de ${primeraLetraMayuscula(nombreProducto)} en el carrito para quitar.`);
+                    contenedor__mensajeDeAviso.textContent = `No hay suficientes unidades de ${primeraLetraMayuscula(nombreProducto)} en el carrito para quitar.`;
+                    contenedor__mensajeDeAviso.style.display = "flex";
                     return;
                 }
             }
@@ -172,7 +182,8 @@ function crearProductoDOM(producto) {
             actualizarVisibilidadBotonBorrarCarrito();
         } else {
 
-            alert('Seleccione al menos una unidad para agregar al carrito.');
+            contenedor__mensajeDeAviso.textContent = 'Seleccione al menos una unidad para agregar al carrito.';
+            contenedor__mensajeDeAviso.style.display = "flex";
         }
     });
 
@@ -315,8 +326,11 @@ sectorCarrito__botonIniciarSesion.addEventListener("click", () => {
     let sectorCarrito__contrasenyaIngresada = document.getElementById("sectorCarrito__contrasenyaIngresada").value;
     document.getElementById("sectorCarrito__contrasenyaIngresada").value = "";
 
+    let comprobacionContrasenya = document.getElementById("sectorCarrito__contrasenyaIngresada");
+
+
     if (sectorCarrito__contrasenyaIngresada !== contrasenyaGuardada || sectorCarrito__contrasenyaIngresada === null) {
-        alert("Probá de nuevo o registrate");
+        comprobacionContrasenya.style.borderColor ="red";
     } else {
         coincideContrasenya();
     }
@@ -354,35 +368,43 @@ sectorCarrito__botonRegistro.addEventListener("click", () => {
 
     //Validación de datos de registro, si todo está ok, aparece el carrito
     formularioRegistro__enviar.addEventListener("click", () => {
-        let formularioRegistro__nombre = document.getElementById("formularioRegistro__nombre").value;
-        let formularioRegistro__apellido = document.getElementById("formularioRegistro__apellido").value;
-        let formularioRegistro__contrasenya = document.getElementById("formularioRegistro__contrasenya").value;
-        let formularioRegistro__mail = document.getElementById("formularioRegistro__mail").value;
+        let formularioRegistro__nombre = document.getElementById("formularioRegistro__nombre");
+        let formularioRegistro__apellido = document.getElementById("formularioRegistro__apellido");
+        let formularioRegistro__contrasenya = document.getElementById("formularioRegistro__contrasenya");
+        let formularioRegistro__mail = document.getElementById("formularioRegistro__mail");
 
-        if (formularioRegistro__nombre === null || !isNaN(formularioRegistro__nombre)) {
-            alert("Ingresá nuevamente tu nombre, no es apropiado");
+        if (formularioRegistro__nombre.value === "" || !isNaN(formularioRegistro__nombre.value)) {
+            formularioRegistro__nombre.style.borderColor = "red";
             return;
+        } else {
+            formularioRegistro__nombre.style.borderColor = "";
         }
 
-        if (formularioRegistro__apellido === null || !isNaN(formularioRegistro__apellido)) {
-            alert("Ingresá nuevamente tu apellido, no es apropiado");
+        if (formularioRegistro__apellido.value === "" || !isNaN(formularioRegistro__apellido.value)) {
+            formularioRegistro__apellido.style.borderColor = "red";
             return;
+        } else {
+            formularioRegistro__apellido.style.borderColor = ""; // Restablecer el color del borde
         }
 
-        if (formularioRegistro__mail === null || !isNaN(formularioRegistro__mail)) {
-            alert("Igresá nuevamente tu mail, no es válido");
+        if (formularioRegistro__mail.value === null || !isNaN(formularioRegistro__mail.value)) {
+            formularioRegistro__mail.style.borderColor = "red";
             return;
+        } else {
+            formularioRegistro__mail.style.borderColor = ""; // Restablecer el color del borde
         }
 
-        if (formularioRegistro__contrasenya === null || formularioRegistro__contrasenya.length < 8) {
-            alert("Contraseña incorrecta, tiene que tener mínimo 8 dígitos");
+        if (formularioRegistro__contrasenya.value === "" || formularioRegistro__contrasenya.value.length < 8) {
+            formularioRegistro__contrasenya.style.borderColor = "red";
             return;
+        } else {
+            formularioRegistro__contrasenya.style.borderColor = ""; // Restablecer el color del borde
         }
 
-        usuarioIngresado = localStorage.setItem("usuario", primeraLetraMayuscula(formularioRegistro__nombre));
-        apellidoIngresado = localStorage.setItem("apellido", primeraLetraMayuscula(formularioRegistro__apellido));
-        contrsenyaIngresada = localStorage.setItem("contrasenya", formularioRegistro__contrasenya);
-        mailIngresado = localStorage.setItem("mail", formularioRegistro__mail);
+        usuarioIngresado = localStorage.setItem("usuario", primeraLetraMayuscula(formularioRegistro__nombre.value));
+        apellidoIngresado = localStorage.setItem("apellido", primeraLetraMayuscula(formularioRegistro__apellido.value));
+        contrsenyaIngresada = localStorage.setItem("contrasenya", formularioRegistro__contrasenya.value);
+        mailIngresado = localStorage.setItem("mail", formularioRegistro__mail.value);
 
         paginaCompras__sectorCarrito.style.display = "none";
 
@@ -486,7 +508,6 @@ botonBorrarCarrito.addEventListener('click', () => {
 
     localStorage.removeItem('productos');
     actualizarVisibilidadBotonBorrarCarrito();
-    alert("El carrito ha sido borrado correctamente.");
 
     let menuLateral__contenedorProductosEnCarrito = document.getElementById("menuLateral__contenedorProductosEnCarrito");
 
@@ -502,11 +523,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //Proceso de finalización de la compra
 const menuLateral__botonRealizarCompra = document.getElementById('menuLateral__botonRealizarCompra');
+const botonRealizarCompra__aviso = document.getElementById("botonRealizarCompra__aviso");
 
 menuLateral__botonRealizarCompra.addEventListener('click', () => {
 
     if (!hayProductosEnCarrito()) {
-        alert("No hay productos en el carrito para comprar.");
+        botonRealizarCompra__aviso.style.display = "flex";
         return;
     }
 

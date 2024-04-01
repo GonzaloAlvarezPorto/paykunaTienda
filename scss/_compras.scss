@@ -233,6 +233,13 @@
                 color: white;
                 border-radius: 10px;
                 border: 1px solid white;
+
+                .botonRealizarCompra__aviso{
+                    color: grey;
+                    font-size: 8px;
+                    display: none;
+                    margin-top: 0.5rem;
+                }
             }
         }
 

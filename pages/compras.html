@@ -70,25 +70,28 @@
                 <button class="sectorCarrito__botonRegistro" id="sectorCarrito__botonRegistro">Registro</button>
                 <form class="sectorCarrito__formularioRegistro" id="sectorCarrito__formularioRegistro">
                     <div class="formularioRegistro__sectorNombre" id="formularioRegistro__sectorNombre">
-                        <label class="formularioRegistro__label" for="formularioRegistro__nombre">Nombre:</label>
+                        <label class="formularioRegistro__label" for="formularioRegistro__nombre">Nombre:*</label>
                         <input class="formularioRegistro__input" id="formularioRegistro__nombre" type="text"
                             name="nombre">
                     </div>
                     <div class="formularioRegistro__sectorApellido" id="formularioRegistro__sectorApellido">
-                        <label class="formularioRegistro__label" for="formularioRegistro__apellido">Apellido:</label>
+                        <label class="formularioRegistro__label" for="formularioRegistro__apellido">Apellido:*</label>
                         <input class="formularioRegistro__input" id="formularioRegistro__apellido" type="text"
                             name="apellido">
                     </div>
                     <div class="formularioRegistro__sectorMail" id="formularioRegistro__sectorMail">
-                        <label class="formularioRegistro__label" for="formularioRegistro__mail">eMail:</label>
+                        <label class="formularioRegistro__label" for="formularioRegistro__mail">eMail:*</label>
                         <input class="formularioRegistro__input" id="formularioRegistro__mail" type="email" name="mail">
                     </div>
                     <div class="formularioRegistro__sectorContrasenya" id="formularioRegistro__sectorContrasenya">
                         <label class="formularioRegistro__label"
-                            for="formularioRegistro__contrasenya">Contraseña:</label>
+                            for="formularioRegistro__contrasenya">Contraseña:*</label>
                         <input class="formularioRegistro__input" id="formularioRegistro__contrasenya" type="password"
                             name="contrasenya">
                     </div>
+                    <p class="formularioRegistro__mensaje" id="formularioRegistro__mensaje">
+                        * campos obligatorios
+                    </p>
                     <button class="formularioRegistro__enviar" id="formularioRegistro__enviar" type="button">
                         Enviar
                     </button>
@@ -118,7 +121,11 @@
                         id="menuLateral__contenedorProductosEnCarrito">
                     </div>
                     <button class="menuLateral__botonRealizarCompra" id="menuLateral__botonRealizarCompra">Realizar
-                        Compra</button>
+                        Compra
+                        <p class="botonRealizarCompra__aviso" id="botonRealizarCompra__aviso">
+                            No hay productos en el carrito para comprar.
+                        </p>
+                    </button>
                 </div>
                 <div class="menuDeCompra__grillaDeProductos" id="menuDeCompra__grillaDeProductos">
                 </div>
@@ -129,7 +136,8 @@
                 </p>
                 <div class="cierreCompra__contenedorDetallesCompra" id="cierreCompra__contenedorDetallesCompra">
                 </div>
-                <p class="cierreCompra__subtotalCompra" id="cierreCompra__subtotalCompra">El importe total de tu compra es $0</p>
+                <p class="cierreCompra__subtotalCompra" id="cierreCompra__subtotalCompra">El importe total de tu compra
+                    es $0</p>
                 <button class="cierreCompra__validacion" id="cierreCompra__validacion">
                     Confirmar Compra
                 </button>
