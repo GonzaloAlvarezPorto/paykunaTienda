@@ -271,11 +271,11 @@ let menuAbierto = false;
 abrir.addEventListener("click", () => {
     if (menuAbierto) {
         nav.classList.remove("visible");
-        abrir.src = "/media/images/boton__apertura__menu.png";
+        abrir.src = "../media/images/boton__apertura__menu.png";
         abrir.alt = "abrir";
         abrir.title = "abrir";
     } else {
-        abrir.src = "/media/images/flecha_blanca_asc2.png";
+        abrir.src = "../media/images/flecha_blanca_asc2.png";
         abrir.alt = "cerrar";
         abrir.title = "cerrar";
         nav.classList.add("visible");
