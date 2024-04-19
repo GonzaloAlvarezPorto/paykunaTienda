@@ -1,0 +1,80 @@
+[
+    {
+        "nombre": "lechuga",
+        "imagen": "../media/images/foto__lechuga.jpg",
+        "precio": "1000",
+        "agrupador": "verduras"
+    },
+    {
+        "nombre": "remolacha",
+        "imagen": "../media/images/foto__remolacha.jpg",
+        "precio": "1500",
+        "agrupador": "verduras"
+    },
+    {
+        "nombre": "pepino",
+        "imagen": "../media/images/foto__pepino.jpg",
+        "precio": "2000",
+        "agrupador": "verduras"
+    },
+    {
+        "nombre": "sillón",
+        "imagen": "../media/images/foto__sillon.jpg",
+        "precio": "2000",
+        "agrupador": "muebles"
+    },
+    {
+        "nombre": "yerba",
+        "imagen": "../media/images/foto__yerba.jpg",
+        "precio": "2000",
+        "agrupador": "almacén"
+    },
+    {
+        "nombre": "palta",
+        "imagen": "../media/images/foto__palta.jpg",
+        "precio": "2000",
+        "agrupador": "frutas"
+    },
+    {
+        "nombre": "silla",
+        "imagen": "../media/images/foto__silla.jpeg",
+        "precio": "2000",
+        "agrupador": "muebles"
+    },
+    {
+        "nombre": "sandía",
+        "imagen": "../media/images/foto__sandia.jpg",
+        "precio": "2000",
+        "agrupador": "frutas"
+    },
+    {
+        "nombre": "mesa",
+        "imagen": "../media/images/foto__mesa.jpeg",
+        "precio": "2000",
+        "agrupador": "muebles"
+    },
+    {
+        "nombre": "frutilla",
+        "imagen": "../media/images/foto__frutilla.jpg",
+        "precio": "2000",
+        "agrupador": "frutas"
+    },
+    {
+        "nombre": "banana",
+        "imagen": "../media/images/foto__banana.jpg",
+        "precio": "2000",
+        "agrupador": "frutas"
+    },
+    {
+        "nombre": "leche",
+        "imagen": "../media/images/foto__leche.jpg",
+        "precio": "2000",
+        "agrupador": "almacén"
+    },
+    {
+        "nombre": "arroz",
+        "imagen": "../media/images/foto__arroz.jpeg",
+        "precio": "2000",
+        "agrupador": "almacén"
+    }
+]

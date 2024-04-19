@@ -18,14 +18,12 @@ function queAparezcaElCarrito() {
 };
 
 //Funcion que filtra los productos dependiendo del agrupador
-function filtrarPorAgrupador(productosJSON, agrupador) {
+function filtrarPorAgrupador(productos, agrupador) {
     let menuDeCompra__grillaDeProductos = document.getElementById("menuDeCompra__grillaDeProductos");
 
     menuDeCompra__grillaDeProductos.innerHTML = "";
 
-    const productosJSONParseados = JSON.parse(productosJSON);
-
-    productosJSONParseados.forEach(producto => {
+    productos.forEach(producto => {
 
         if (producto.agrupador === agrupador) {
             let productoDOM = crearProductoDOM(producto);
@@ -91,13 +89,6 @@ function crearProductoDOM(producto) {
     productoComandos__botoneraPositiva.textContent = "+";
     productoComandos__botoneraPositiva.type = "button";
 
-    let contenedor__mensajeDeAviso = document.createElement("p");
-    contenedor__mensajeDeAviso.className = "contenedor__mensajeDeAviso";
-    contenedor__mensajeDeAviso.id = "contenedor__mensajeDeAviso";
-    contenedor__mensajeDeAviso.textContent = "";
-    contenedor__mensajeDeAviso.style.textAlign = "center";
-    contenedor__mensajeDeAviso.style.display = "none";
-
     let contenedor__botonAgregarProducto = document.createElement("button");
     contenedor__botonAgregarProducto.className = "contenedor__botonAgregarProducto";
     contenedor__botonAgregarProducto.id = "contenedor__botonAgregarProducto";
@@ -111,10 +102,9 @@ function crearProductoDOM(producto) {
     grillaDeProductos__contenedor.appendChild(imagenProducto);
     grillaDeProductos__contenedor.appendChild(contenedor__productoPrecio);
     grillaDeProductos__contenedor.appendChild(contenedor__productoComandos);
-    grillaDeProductos__contenedor.appendChild(contenedor__mensajeDeAviso);
     grillaDeProductos__contenedor.appendChild(contenedor__botonAgregarProducto);
-    
-    
+
+
     productoComandos__botoneraNegativa.addEventListener('click', () => {
         let cantidadComprada = parseInt(productoComandos__cantidadComprada.value);
         productoComandos__cantidadComprada.value = cantidadComprada - 1;
@@ -151,7 +141,6 @@ function crearProductoDOM(producto) {
                 if (productoExistente) {
                     productoExistente.cantidad += cantidadComprada;
                     productoExistente.total = productoExistente.cantidad * precioProducto;
-                    contenedor__mensajeDeAviso.style.display = "none";
                 } else {
                     productosEnLocalStorage.push({
                         nombre: nombreProducto,
@@ -160,16 +149,36 @@ function crearProductoDOM(producto) {
                         total: cantidadComprada * precioProducto
                     });
                 }
+                Toastify({
+                    text: primeraLetraMayuscula(producto.nombre) + " X" + cantidadComprada + " agregado al carrito.",
+                    duration: 3000,
+                    style: {
+                        background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        borderRadius: "10px"
+                    }
+                }).showToast();
+
             } else {
 
                 if (productoExistente && productoExistente.cantidad >= Math.abs(cantidadComprada)) {
                     productoExistente.cantidad += cantidadComprada;
                     productoExistente.total = productoExistente.cantidad * precioProducto;
+
                 } else {
-                    contenedor__mensajeDeAviso.textContent = `No hay suficientes unidades de ${primeraLetraMayuscula(nombreProducto)} en el carrito para quitar.`;
-                    contenedor__mensajeDeAviso.style.display = "flex";
+                    Swal.fire({
+                        icon: "error",
+                        text: `No hay suficientes unidades de ${primeraLetraMayuscula(nombreProducto)} en el carrito para quitar.`,
+                    });
                     return;
                 }
+                Toastify({
+                    text: primeraLetraMayuscula(producto.nombre) + " X" + -cantidadComprada + " borrado del carrito.",
+                    duration: 3000,
+                    style: {
+                        background: "linear-gradient(to right, red, yellow)",
+                        borderRadius: "10px"
+                    }
+                }).showToast();
             }
 
             localStorage.setItem('productos', JSON.stringify(productosEnLocalStorage));
@@ -181,9 +190,11 @@ function crearProductoDOM(producto) {
             mostrarProductosEnCarrito(cierreCompra__contenedorDetallesCompra);
             actualizarVisibilidadBotonBorrarCarrito();
         } else {
-
-            contenedor__mensajeDeAviso.textContent = 'Seleccione al menos una unidad para agregar al carrito.';
-            contenedor__mensajeDeAviso.style.display = "flex";
+            Swal.fire({
+                icon: "error",
+                text: `Debés poner al menos un número positivo o negativo.`,
+            });
+            
         }
     });
 
@@ -235,14 +246,12 @@ function mostrarProductosEnCarrito(contenedor) {
 }
 
 //Función que parsea todos los productos en formato JSON
-function mostrarTodos(productosJSON) {
+function mostrarTodos(productos) {
     let menuDeCompra__grillaDeProductos = document.getElementById("menuDeCompra__grillaDeProductos");
 
     menuDeCompra__grillaDeProductos.innerHTML = "";
 
-    const productosJSONParseados = JSON.parse(productosJSON);
-
-    productosJSONParseados.forEach(producto => {
+    productos.forEach(producto => {
         let productoDOM = crearProductoDOM(producto);
         menuDeCompra__grillaDeProductos.appendChild(productoDOM);
     });
@@ -330,7 +339,12 @@ sectorCarrito__botonIniciarSesion.addEventListener("click", () => {
 
 
     if (sectorCarrito__contrasenyaIngresada !== contrasenyaGuardada || sectorCarrito__contrasenyaIngresada === null) {
-        comprobacionContrasenya.style.borderColor ="red";
+        comprobacionContrasenya.style.borderColor = "red";
+        Swal.fire({
+            icon: "error",
+            title: "¡Alto ahí!",
+            text: "Tu contraseña no es correcta",
+        });
     } else {
         coincideContrasenya();
     }
@@ -340,8 +354,28 @@ sectorCarrito__botonIniciarSesion.addEventListener("click", () => {
 let menuLateral__botonCierreSesion = document.getElementById("menuLateral__botonCierreSesion");
 
 menuLateral__botonCierreSesion.addEventListener("click", () => {
-    localStorage.clear();
-    window.location.reload();
+    Swal.fire({
+        title: "¿Cerrando sesión?",
+        text: "¿Estás seguro que deseas salir de la sesión? Se borrarán todos los datos cargados.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, estoy seguro.",
+        cancelButtonText: "No, no quiero."
+    }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.clear();
+            window.location.reload();
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        }
+    });
+
+
 });
 
 //Registrar y guardar datos de usuario
@@ -374,37 +408,65 @@ sectorCarrito__botonRegistro.addEventListener("click", () => {
         let formularioRegistro__mail = document.getElementById("formularioRegistro__mail");
 
         if (formularioRegistro__nombre.value === "" || !isNaN(formularioRegistro__nombre.value)) {
+            formularioRegistro__nombre.setAttribute("placeholder", "Ingresá tu nombre");
             formularioRegistro__nombre.style.borderColor = "red";
+            Swal.fire({
+                icon: "error",
+                title: "¡Detente anónimo!",
+                text: "Tenés que ingresar tu nombre.",
+            });
             return;
         } else {
             formularioRegistro__nombre.style.borderColor = "";
         }
 
         if (formularioRegistro__apellido.value === "" || !isNaN(formularioRegistro__apellido.value)) {
+            formularioRegistro__apellido.setAttribute("placeholder", "Ingresá tu apellido");
             formularioRegistro__apellido.style.borderColor = "red";
+            Swal.fire({
+                icon: "error",
+                title: "¡Detente anónimo!",
+                text: "Tenés que ingresar tu apellido.",
+            });
             return;
         } else {
-            formularioRegistro__apellido.style.borderColor = ""; // Restablecer el color del borde
+            formularioRegistro__apellido.style.borderColor = "";
         }
 
         if (formularioRegistro__mail.value === null || !isNaN(formularioRegistro__mail.value)) {
+            formularioRegistro__mail.setAttribute("placeholder", "Ingresá tu mail");
             formularioRegistro__mail.style.borderColor = "red";
+            Swal.fire({
+                icon: "error",
+                title: "¿Sin ubicación electrónica?",
+                text: "Tenés que ingresar tu mail.",
+            });
             return;
         } else {
-            formularioRegistro__mail.style.borderColor = ""; // Restablecer el color del borde
+            formularioRegistro__mail.style.borderColor = "";
         }
 
         if (formularioRegistro__contrasenya.value === "" || formularioRegistro__contrasenya.value.length < 8) {
             formularioRegistro__contrasenya.style.borderColor = "red";
+            Swal.fire({
+                icon: "error",
+                title: "¡La seguridad ante todo!",
+                text: "Tenés que ingresar una contraseña. Tiene que tener mínimo 8 caracteres.",
+            });
             return;
         } else {
-            formularioRegistro__contrasenya.style.borderColor = ""; // Restablecer el color del borde
+            formularioRegistro__contrasenya.style.borderColor = "";
         }
 
         usuarioIngresado = localStorage.setItem("usuario", primeraLetraMayuscula(formularioRegistro__nombre.value));
         apellidoIngresado = localStorage.setItem("apellido", primeraLetraMayuscula(formularioRegistro__apellido.value));
         contrsenyaIngresada = localStorage.setItem("contrasenya", formularioRegistro__contrasenya.value);
         mailIngresado = localStorage.setItem("mail", formularioRegistro__mail.value);
+
+        Swal.fire({
+            icon: "success",
+            text: "Registro realizado con éxito, adelante.",
+        });
 
         paginaCompras__sectorCarrito.style.display = "none";
 
@@ -414,89 +476,16 @@ sectorCarrito__botonRegistro.addEventListener("click", () => {
 
 //SECTOR CARRITO
 //Listado de productos
-const productos = [
-    {
-        nombre: "lechuga",
-        imagen: "../media/images/foto__lechuga.jpg",
-        precio: "1000",
-        agrupador: "verduras"
-    },
-    {
-        nombre: "remolacha",
-        imagen: "../media/images/foto__remolacha.jpg",
-        precio: "1500",
-        agrupador: "verduras"
-    },
-    {
-        nombre: "pepino",
-        imagen: "../media/images/foto__pepino.jpg",
-        precio: "2000",
-        agrupador: "verduras"
-    },
-    {
-        nombre: "sillón",
-        imagen: "../media/images/foto__sillon.jpg",
-        precio: "2000",
-        agrupador: "muebles"
-    },
-    {
-        nombre: "yerba",
-        imagen: "../media/images/foto__yerba.jpg",
-        precio: "2000",
-        agrupador: "almacén"
-    },
-    {
-        nombre: "palta",
-        imagen: "../media/images/foto__palta.jpg",
-        precio: "2000",
-        agrupador: "frutas"
-    },
-    {
-        nombre: "silla",
-        imagen: "../media/images/foto__silla.jpeg",
-        precio: "2000",
-        agrupador: "muebles"
-    },
-    {
-        nombre: "sandía",
-        imagen: "../media/images/foto__sandia.jpg",
-        precio: "2000",
-        agrupador: "frutas"
-    },
-    {
-        nombre: "mesa",
-        imagen: "../media/images/foto__mesa.jpeg",
-        precio: "2000",
-        agrupador: "muebles"
-    },
-    {
-        nombre: "frutilla",
-        imagen: "../media/images/foto__frutilla.jpg",
-        precio: "2000",
-        agrupador: "frutas"
-    },
-    {
-        nombre: "banana",
-        imagen: "../media/images/foto__banana.jpg",
-        precio: "2000",
-        agrupador: "frutas"
-    },
-    {
-        nombre: "leche",
-        imagen: "../media/images/foto__leche.jpg",
-        precio: "2000",
-        agrupador: "almacén"
-    },
-    {
-        nombre: "arroz",
-        imagen: "../media/images/foto__arroz.jpeg",
-        precio: "2000",
-        agrupador: "almacén"
-    }
-];
+let productos = [];
 
-//Pasamos los objetos a formato JSON
-const productosJSON = JSON.stringify(productos, null, 4);
+fetch("/data/productos.json")
+    .then((res) => res.json())
+    .then((data) => {
+        productos = [...data];
+
+        mostrarTodos(data);
+    })
+
 
 //Creación del botón borrar carrito
 let botonBorrarCarrito = document.createElement("button");
@@ -528,7 +517,10 @@ const botonRealizarCompra__aviso = document.getElementById("botonRealizarCompra_
 menuLateral__botonRealizarCompra.addEventListener('click', () => {
 
     if (!hayProductosEnCarrito()) {
-        botonRealizarCompra__aviso.style.display = "flex";
+        Swal.fire({
+            icon: "error",
+            text: "No hay elementos en el carrito para realizar la compra.",
+        });
         return;
     }
 
@@ -594,12 +586,14 @@ cierreCompra__validacion.addEventListener("click", () => {
 
     paginasCompras__confirmacionCompra.style.display = "flex";
 
+    Swal.fire("Compra realizada con éxito.");
+
     localStorage.removeItem('productos');
 });
 
 mostrarProductosEnCarrito(menuLateral__contenedorProductosEnCarrito);
 
-mostrarTodos(productosJSON);
+mostrarTodos(productos);
 
 let menuLateral__seccionesMuebles = document.getElementById("menuLateral__seccionesMuebles");
 let menuLateral__seccionesVerduras = document.getElementById("menuLateral__seccionesVerduras");
@@ -608,21 +602,21 @@ let menuLateral__seccionesAlmacen = document.getElementById("menuLateral__seccio
 let menuLateral__seccionesGenerales = document.getElementById("menuLateral__seccionesGenerales");
 
 menuLateral__seccionesGenerales.addEventListener("click", () => {
-    mostrarTodos(productosJSON);
+    mostrarTodos(productos);
 });
 
 menuLateral__seccionesMuebles.addEventListener("click", () => {
-    filtrarPorAgrupador(productosJSON, "muebles");
+    filtrarPorAgrupador(productos, "muebles");
 });
 
 menuLateral__seccionesVerduras.addEventListener("click", () => {
-    filtrarPorAgrupador(productosJSON, "verduras");
+    filtrarPorAgrupador(productos, "verduras");
 });
 
 menuLateral__seccionesFrutas.addEventListener("click", () => {
-    filtrarPorAgrupador(productosJSON, "frutas");
+    filtrarPorAgrupador(productos, "frutas");
 });
 
 menuLateral__seccionesAlmacen.addEventListener("click", () => {
-    filtrarPorAgrupador(productosJSON, "almacén");
+    filtrarPorAgrupador(productos, "almacén");
 });
