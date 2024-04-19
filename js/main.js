@@ -478,7 +478,7 @@ sectorCarrito__botonRegistro.addEventListener("click", () => {
 //Listado de productos
 let productos = [];
 
-fetch("/data/productos.json")
+fetch("https://raw.githubusercontent.com/GonzaloAlvarezPorto/paykunaTienda/main/data/productos.json")
     .then((res) => res.json())
     .then((data) => {
         productos = [...data];
