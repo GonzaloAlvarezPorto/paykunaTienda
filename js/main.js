@@ -362,7 +362,6 @@ if (sectorCarrito__botonIniciarSesion) {
 //Cierre de sesión
 let menuLateral__botonCierreSesion = document.getElementById("menuLateral__botonCierreSesion");
 
-
 if (menuLateral__botonCierreSesion) {
     menuLateral__botonCierreSesion.addEventListener("click", () => {
         Swal.fire({
@@ -593,33 +592,60 @@ if (confirmacionCompra__botonOtraCompra) {
 
     });
 }
+
 //Validación final de la compra
 const cierreCompra__validacion = document.getElementById("cierreCompra__validacion");
 
 if (cierreCompra__validacion) {
     cierreCompra__validacion.addEventListener("click", () => {
-
+        
+        // Ocultar la página de cierre de compra
         let paginaCompras__cierreCompra = document.getElementById("paginaCompras__cierreCompra");
-
         paginaCompras__cierreCompra.style.display = "none";
-
+        
+        // Mostrar la página de confirmación de compra
         let paginasCompras__confirmacionCompra = document.getElementById("paginasCompras__confirmacionCompra");
-
         paginasCompras__confirmacionCompra.style.display = "flex";
 
+        // Mostrar mensaje de éxito
         Swal.fire("Compra realizada con éxito.");
 
+        // Obtener productos del localStorage (suponiendo que están almacenados como un array de objetos)
+        const productos = JSON.parse(localStorage.getItem('productos')) || [];
+        const usuario = `${localStorage.getItem('usuario')} ${localStorage.getItem('apellido')}`;
+        const mail = localStorage.getItem('mail');
+
+        // Generar resumen del pedido
+        let resumenPedido = `Resumen del pedido:\nNombre: ${usuario}\nMail: ${mail}\n`;
+        let total = 0;
+
+        productos.forEach((producto, index) => {
+            resumenPedido += `- Producto: ${primeraLetraMayuscula(producto.nombre)} - Cantidad: ${producto.cantidad}, Precio: $${producto.precio}, Total producto: $${producto.cantidad*producto.precio}\n`;
+            total += producto.cantidad * producto.precio;
+        });
+
+        resumenPedido += `Total: $${total.toFixed(2)}`;
+
+        // Número de WhatsApp al que se enviará el mensaje
+        const whatsappNumber = "+5491157953908"; // Reemplaza con el número deseado
+
+        // Crear el enlace de WhatsApp con el resumen del pedido
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(resumenPedido)}`;
+
+        // Abrir el enlace de WhatsApp en una nueva pestaña
+        window.open(whatsappLink, '_blank');
+
+        // Remover productos del localStorage
         localStorage.removeItem('productos');
     });
 }
+
 
 let menuLateral__contenedorProductosEnCarrito = document.getElementById("menuLateral__contenedorProductosEnCarrito");
 
 if (menuLateral__contenedorProductosEnCarrito) {
     mostrarProductosEnCarrito(menuLateral__contenedorProductosEnCarrito);
 }
-
-
 
 if (menuDeCompra__grillaDeProductos) {
     mostrarTodos(productos);
